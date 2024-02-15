@@ -2,9 +2,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const EmailReset = () => {
+  const [data, setdata] = useState('')
   const [email, setemail] = useState('')
 const navigate = useNavigate();
   const handleSubmit = async (e)  => {
@@ -12,9 +14,10 @@ const navigate = useNavigate();
     axios.post('http://localhost:8000/resetEmail', { email })
     .then((res)=>{
       // console.log(res);
+      setdata(res.data.message)
+      toast.success(res.data.message)
       if (res.data.status) {
-        console.log(res);
-        // navigate('/otp', { state: email })
+        // console.log(res);
         navigate(`/otp?email=${email}`)
       }
     }).catch((err)=>{

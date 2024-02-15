@@ -2,8 +2,10 @@ import React,{useState} from "react";
 import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import OtpInput from 'react-otp-input';
+import { toast } from "react-toastify";
 
 const OTPVerification = () => {
+  const [mesotp, setmesOtp] = useState('')
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const email = params.get("email");
@@ -16,11 +18,16 @@ const data = {
 }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(otpCodes);
+    // console.log(otpCodes);
     axios.post(URL, data)
     .then((res)=>{
-      // console.log(res);
-      if (res.data.status) {
+      setmesOtp(res.data)
+      toast.success(res.data)
+      if (res.status === 400) {
+        // console.log(res);
+        setmessege('enter a correct otp code')
+      }
+      if (res.status === 200) {
         console.log(res);
         navigate(`/resetpassword?email=${email}`)
       }
@@ -33,7 +40,7 @@ const data = {
     try {
       const response = await axios.post(urlReset, { email: email });
       console.log(response.data);
-      alert("OTP resent successfully!");
+      toast.success("OTP resent successfully!");
     } catch (error) {
       console.error("Error resending OTP:", error);
     }

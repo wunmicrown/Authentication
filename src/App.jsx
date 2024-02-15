@@ -5,10 +5,26 @@ import Home from "./Components/Home"
 import OTPVerification from "./Components/authentication/OTPVerification"
 import PasswordReset from "./Components/authentication/PasswordReset"
 import EmailReset from "./Components/authentication/EmailReset"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 const App = () => {
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+
       {/* <Signin/> */}
       <Routes>
         <Route path="/login" element={< Login />} />
@@ -18,7 +34,7 @@ const App = () => {
         <Route path="/home" element={< Home />} />
         <Route path="/OTP" element={< OTPVerification />} />
         <Route path="/resetpassword" element={< PasswordReset />} />
-        <Route path="/resetEmail" element={< EmailReset/>} />
+        <Route path="/resetEmail" element={< EmailReset />} />
       </Routes>
     </>
   )
