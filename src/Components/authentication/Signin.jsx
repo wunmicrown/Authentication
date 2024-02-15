@@ -33,7 +33,7 @@ const Signin = ({ setAuthenticated }) => {
   return (
     <>
       <div className="max-w-md mx-auto mt-20 p-6 bg-gray-100 rounded-md">
-        <h2 className="text-center text-2xl mb-4 font-bold">Sign Up</h2>
+        <h2 className="text-2xl mb-4 text-center font-bold text-blue-600">Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <div className="flex items-center border rounded-md px-3 py-2">

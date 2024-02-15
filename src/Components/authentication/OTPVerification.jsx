@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import OtpInput from 'react-otp-input';
@@ -12,28 +12,28 @@ const OTPVerification = () => {
   const URL = "http://localhost:8000/verifyOTP";
   const urlReset = "http://localhost:8000/resendOTP";
   const [otpCodes, setOtpCodes] = useState('');
-const data = {
-  email: email,
-  otpCodes: otpCodes,
-}
+  const data = {
+    email: email,
+    otpCodes: otpCodes,
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(otpCodes);
     axios.post(URL, data)
-    .then((res)=>{
-      setmesOtp(res.data)
-      toast.success(res.data)
-      if (res.status === 400) {
-        // console.log(res);
-        setmessege('enter a correct otp code')
-      }
-      if (res.status === 200) {
-        console.log(res);
-        navigate(`/resetpassword?email=${email}`)
-      }
-    }).catch((err)=>{
-      console.log(err);
-    })
+      .then((res) => {
+        setmesOtp(res.data)
+        toast.success(res.data)
+        if (res.status === 400) {
+          // console.log(res);
+          setmessege('enter a correct otp code')
+        }
+        if (res.status === 200) {
+          console.log(res);
+          navigate(`/resetpassword?email=${email}`)
+        }
+      }).catch((err) => {
+        console.log(err);
+      })
   };
 
   const handleResendOTP = async () => {
@@ -45,7 +45,7 @@ const data = {
       console.error("Error resending OTP:", error);
     }
   };
-  
+
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -54,17 +54,16 @@ const data = {
         <p className="text-center text-gray-600 mb-4">We have sent a code to your email.</p>
         <form >
           <div className="flex flex-row gap-6">
-          <OtpInput
-                value={otpCodes}
-                onChange={(e) => setOtpCodes(e)}
-                numInputs={4}
-                containerStyle="px-2 sm:px-0 text-[32px] "
-                shouldAutoFocus={true}
-                inputStyle="border border-[#00693D] focus:border-yellow-900 rounded sm:rounded-md min-w-[2rem] sm:min-w-[3.3rem] min-h-[2rem] sm:min-h-[3.3rem]"
-                renderSeparator={<span className="mx-2 sm:mx-3"> </span>}
-                renderInput={(props) => <input {...props} />}
-              />
-           
+            <OtpInput
+              value={otpCodes}
+              onChange={(e) => setOtpCodes(e)}
+              numInputs={4}
+              containerStyle="px-2 sm:px-0 text-3xl"
+              shouldAutoFocus={true}
+              inputStyle="bg-slate-50 shadow-md focus:outline-none rounded-xl min-w-12 sm:min-w-16 min-h-12 sm:min-h-16"
+              renderSeparator={<span className="mx-2 sm:mx-3 bg-slate-50"></span>}
+              renderInput={(props) => <input {...props} />}
+            />
           </div>
           <button type="submit" onClick={handleSubmit} className="bg-blue-500 w-full text-white py-2 px-4 rounded-md mt-4">
             Verify Account

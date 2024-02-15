@@ -32,8 +32,8 @@ const Login = ({ setAuthenticated }) => {
 
 
   return (
-    <div className="max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold mb-4">Login</h2>
+    <div className="max-w-md mx-auto mt-20">
+      <h2 className="text-2xl mb-4 text-center font-bold text-blue-600">Login</h2>
       <form onSubmit={loginFormik.handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
