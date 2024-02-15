@@ -25,7 +25,7 @@ const Login = ({ setAuthenticated }) => {
         }
       } catch (error) {
         console.error("Login failed:", error);
-        toast.error("An error occurred while logging in");
+        toast.error("Invalid email or password");
       }
     },
   });
