@@ -4,42 +4,32 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import { toast } from "react-toastify";
 
-const Login = () => {
+const Login = ({ setAuthenticated }) => {
   const URL = "http://localhost:8000/login";
   const navigate = useNavigate();
   const loginFormik = useFormik({
     initialValues: {
       email: "",
       password: "",
-    },  
-
+    },
     onSubmit: async (values) => {
       try {
         const response = await axios.post(URL, values);
-        console.log(response.data);
         if (response.status === 200) {
-          console.log("Login successful");
+          setAuthenticated(true); // Set authenticated status to true
           toast.success("Login successful");
-          navigate("/home");
+          navigate("/home"); // Redirect to home page
         } else {
           console.error("Login failed:", response.data);
-          // Handle login failure, show error to the user
-          if (response.status === 401) {
-            // Invalid credentials
-            toast.error("Invalid email or password");
-          } else {
-            // Other errors
-            toast.error("An error occurred. Please try again later.");
-          }
+          toast.error("Invalid email or password");
         }
       } catch (error) {
         console.error("Login failed:", error);
-        // Handle login failure, show error to the user
-        toast.warning("Invalid email or password");
+        toast.error("An error occurred while logging in");
       }
     },
-    
   });
+
 
   return (
     <div className="max-w-md mx-auto">

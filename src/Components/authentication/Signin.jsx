@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AiOutlineUser, AiOutlineMail, AiOutlineLock } from "react-icons/ai";
 
-const Signin = () => {
+const Signin = ({ setAuthenticated }) => {
   const URL = "http://localhost:8000/register";
   const navigate = useNavigate();
   const { handleChange, handleSubmit, values, errors } = useFormik({
@@ -15,12 +15,21 @@ const Signin = () => {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-      axios.post(URL, values);
-      navigate("/login");
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post(URL, values);
+        if (response.status === 201) {
+          setAuthenticated(true); // Set authenticated status to true
+          navigate("/login"); // Redirect to login page
+        } else {
+          console.error("Sign up failed:", response.data);
+        }
+      } catch (error) {
+        console.error("Sign up failed:", error);
+      }
     },
   });
+
   return (
     <>
       <div className="max-w-md mx-auto mt-20 p-6 bg-gray-100 rounded-md">
