@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
+import { API_URL } from "./constants/Api";
 
 const Home = () => {
-  const URL = "http://localhost:8000/uploadFile";
+  const URL = `${API_URL}/uploadFile`;
   const [myFile, setMyFile] = useState("");
   const [data, setData] = useState("");
   

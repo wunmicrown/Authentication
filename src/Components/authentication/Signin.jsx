@@ -3,9 +3,10 @@ import { validationSchema } from "../userSchema";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AiOutlineUser, AiOutlineMail, AiOutlineLock } from "react-icons/ai";
+import { API_URL } from "../constants/Api";
 
 const Signin = ({ setAuthenticated }) => {
-  const URL = "http://localhost:8000/register";
+  const URL = `${API_URL}/register`;
   const navigate = useNavigate();
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: {

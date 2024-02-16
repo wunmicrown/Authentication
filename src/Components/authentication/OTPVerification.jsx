@@ -3,14 +3,15 @@ import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import OtpInput from 'react-otp-input';
 import { toast } from "react-toastify";
+import { API_URL } from "../constants/Api";
 
 const OTPVerification = () => {
   const [mesotp, setmesOtp] = useState('')
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const email = params.get("email");
-  const URL = "http://localhost:8000/verifyOTP";
-  const urlReset = "http://localhost:8000/resendOTP";
+  const URL = `${API_URL}/verifyOTP`;
+  const urlReset = `${API_URL}/resendOTP`;
   const [otpCodes, setOtpCodes] = useState('');
   const data = {
     email: email,

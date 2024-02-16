@@ -3,9 +3,10 @@ import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { API_URL } from "../constants/Api";
 
 const Login = ({ setAuthenticated }) => {
-  const URL = "http://localhost:8000/login";
+  const URL = `h${API_URL}/login`;
   const navigate = useNavigate();
   const loginFormik = useFormik({
     initialValues: {

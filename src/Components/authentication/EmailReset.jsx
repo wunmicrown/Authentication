@@ -3,15 +3,18 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API_URL } from "../constants/Api";
 
 
 const EmailReset = () => {
+  const URL = `${API_URL}/resetEmail`
   const [data, setdata] = useState('')
   const [email, setemail] = useState('')
 const navigate = useNavigate();
-  const handleSubmit = async (e)  => {
-   
-    axios.post('http://localhost:8000/resetEmail', { email })
+
+
+const handleSubmit = async (e)  => {
+    axios.post(URL, { email })
     .then((res)=>{
       // console.log(res);
       setdata(res.data.message)

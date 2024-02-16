@@ -3,8 +3,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API_URL } from "../constants/Api";
 
 const PasswordReset = () => {
+  const URL = `${API_URL}/resetpassword`;
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const email = params.get("email");
@@ -34,7 +36,7 @@ const PasswordReset = () => {
         } else {
           setmessage('')
           try {
-            await axios.post('http://localhost:8000/resetpassword', data)
+            await axios.post(URL, data)
               .then((res) => {
                 // console.log(res);
                 if (res.status ===200) {
