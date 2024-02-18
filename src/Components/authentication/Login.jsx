@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { API_URL } from "../constants/Api";
 
 const Login = ({ setAuthenticated }) => {
-  const URL = `h${API_URL}/login`;
+  const URL = `h${API_URL}/signin`;
   const navigate = useNavigate();
   const loginFormik = useFormik({
     initialValues: {

@@ -6,7 +6,7 @@ import { AiOutlineUser, AiOutlineMail, AiOutlineLock } from "react-icons/ai";
 import { API_URL } from "../constants/Api";
 
 const Signin = ({ setAuthenticated }) => {
-  const URL = `${API_URL}/register`;
+  const URL = `${API_URL}/signup`;
   const navigate = useNavigate();
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: {
