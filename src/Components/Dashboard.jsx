@@ -1,12 +1,37 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { API_URL } from "./constants/Api";
+import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Dashboard = () => {
+  const navigate=useNavigate();
+  const [loading, setLoading] = useState(true)
   const URL = `${API_URL}/uploadFile`;
   const [myFile, setMyFile] = useState("");
   const [data, setData] = useState("");
   
+
+useEffect(() => {
+  const verifyToken= ()=>{
+    axios.post(`${API_URL}/verifyToken`,{token:localStorage.getItem('token')})
+    .then((res)=>{
+      console.log(res);
+      if(res.data.token){
+        setLoading(false)
+      }else{
+        navigate('/login')
+      }
+    })
+  }
+  verifyToken()
+
+ 
+}, [navigate])
+
+if(loading){
+  return <h1>Loading...</h1>
+}
+
   const changeFile = (e) => {
     let myImage = e.target.files[0];
     let reader = new FileReader();
@@ -24,7 +49,7 @@ const Home = () => {
   
   return (
     <>
-      <h1 className="text-3xl font-bold text-center mt-4">Home</h1>
+      <h1 className="text-3xl font-bold text-center mt-4">Dashboard</h1>
       <div className="flex flex-col items-center justify-center h-screen">
       <input
         type="file"
@@ -53,4 +78,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

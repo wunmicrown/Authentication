@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { API_URL } from "../constants/Api";
 
 const Login = ({ setAuthenticated }) => {
-  const URL = `h${API_URL}/signin`;
+  const URL = `${API_URL}/signin`;
   const navigate = useNavigate();
   const loginFormik = useFormik({
     initialValues: {
@@ -18,8 +18,9 @@ const Login = ({ setAuthenticated }) => {
         const response = await axios.post(URL, values);
         if (response.status === 200) {
           setAuthenticated(true); // Set authenticated status to true
+          localStorage.setItem("token", response.data.token); // Store the JWT token in local storage
           toast.success("Login successful");
-          navigate("/home"); // Redirect to home page
+          navigate("/dashboard"); // Redirect to dashboard page
         } else {
           console.error("Login failed:", response.data);
           toast.error("Invalid email or password");
@@ -30,7 +31,6 @@ const Login = ({ setAuthenticated }) => {
       }
     },
   });
-
 
   return (
     <div className="max-w-md mx-auto mt-20">
