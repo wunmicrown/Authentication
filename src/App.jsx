@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Signin from "./Components/authentication/Signin";
+import SignUp from "./Components/authentication/SignUp";
 import Login from "./Components/authentication/Login";
 import Dashboard from "./Components/Dashboard";
 import OTPVerification from "./Components/authentication/OTPVerification";
@@ -8,11 +8,10 @@ import PasswordReset from "./Components/authentication/PasswordReset";
 import EmailReset from "./Components/authentication/EmailReset";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import VerifyOTP from "./Components/authentication/signupVerifyAndSignup/VerifyOTP ";
 
 const App = () => {
-  let token=localStorage.getItem("token")
-  // State to track authentication status
-  // const [authenticated, setAuthenticated] = useState(false);
+ 
 
   return (
     <>
@@ -32,14 +31,15 @@ const App = () => {
       <Routes>
         {/* Public routes */}
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Signin />} />
+        <Route path="/" element={<SignUp />} />
         <Route path="/resetpassword" element={<PasswordReset />} />
         <Route path="/resetEmail" element={<EmailReset />} />
         <Route path="/OTP" element={<OTPVerification />} />
+        <Route path="/signupVerification" element={<VerifyOTP />} />
         {/* Routes accessible after authentication */}
         {/* {authenticated && (
           <> */}
-            <Route path="/dashboard" element={token? <Dashboard />: <Navigate to ='/login'/>} />
+            <Route path="/dashboard" element={<Dashboard />}/> 
           {/* </>
         )} */}
 

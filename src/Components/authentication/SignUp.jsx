@@ -5,7 +5,7 @@ import axios from "axios";
 import { AiOutlineUser, AiOutlineMail, AiOutlineLock } from "react-icons/ai";
 import { API_URL } from "../constants/Api";
 
-const Signin = ({ setAuthenticated }) => {
+const SignUp = () => {
   const URL = `${API_URL}/signup`;
   const navigate = useNavigate();
   const { handleChange, handleSubmit, values, errors } = useFormik({
@@ -20,7 +20,6 @@ const Signin = ({ setAuthenticated }) => {
       try {
         const response = await axios.post(URL, values);
         if (response.status === 201) {
-          // setAuthenticated(true); // Set authenticated status to true
           navigate("/login"); // Redirect to login page
         } else {
           console.error("Sign up failed:", response.data);
@@ -109,4 +108,4 @@ const Signin = ({ setAuthenticated }) => {
   );
 };
 
-export default Signin;
+export default SignUp;
