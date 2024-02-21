@@ -5,7 +5,7 @@ import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { API_URL } from "../constants/Api";
 
-const Login = ({ setAuthenticated }) => {
+const Login = () => {
   const URL = `${API_URL}/signin`;
   const navigate = useNavigate();
   const loginFormik = useFormik({
@@ -17,7 +17,7 @@ const Login = ({ setAuthenticated }) => {
       try {
         const response = await axios.post(URL, values);
         if (response.status === 200) {
-          setAuthenticated(true); // Set authenticated status to true
+          // setAuthenticated(true); // Set authenticated status to true
           localStorage.setItem("token", response.data.token); // Store the JWT token in local storage
           toast.success("Login successful");
           navigate("/dashboard"); // Redirect to dashboard page

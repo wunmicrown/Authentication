@@ -20,7 +20,7 @@ const Signin = ({ setAuthenticated }) => {
       try {
         const response = await axios.post(URL, values);
         if (response.status === 201) {
-          setAuthenticated(true); // Set authenticated status to true
+          // setAuthenticated(true); // Set authenticated status to true
           navigate("/login"); // Redirect to login page
         } else {
           console.error("Sign up failed:", response.data);

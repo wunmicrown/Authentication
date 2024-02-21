@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Signin from "./Components/authentication/Signin";
 import Login from "./Components/authentication/Login";
@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   let token=localStorage.getItem("token")
   // State to track authentication status
-  const [authenticated, setAuthenticated] = useState(false);
+  // const [authenticated, setAuthenticated] = useState(false);
 
   return (
     <>
@@ -31,8 +31,8 @@ const App = () => {
 
       <Routes>
         {/* Public routes */}
-        <Route path="/login" element={<Login setAuthenticated={setAuthenticated} />} />
-        <Route path="/" element={<Signin setAuthenticated={setAuthenticated} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Signin />} />
         <Route path="/resetpassword" element={<PasswordReset />} />
         <Route path="/resetEmail" element={<EmailReset />} />
         <Route path="/OTP" element={<OTPVerification />} />
@@ -44,7 +44,7 @@ const App = () => {
         )} */}
 
         {/* Redirect unauthorized users to sign-in page */}
-        {!authenticated && <Route path="*" element={<Navigate to="/login" />} />}
+        {/* {!authenticated && <Route path="*" element={<Navigate to="/login" />} />} */}
       </Routes>
     </>
   );
