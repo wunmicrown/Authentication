@@ -1,9 +1,9 @@
 import { useFormik } from "formik";
-import { validationSchema } from "../userSchema";
+import { validationSchema } from "../../userSchema";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AiOutlineUser, AiOutlineMail, AiOutlineLock } from "react-icons/ai";
-import { API_URL } from "../constants/Api";
+import { API_URL } from "../../constants/Api";
 
 const SignUp = () => {
   const URL = `${API_URL}/signup`;
@@ -20,7 +20,7 @@ const SignUp = () => {
       try {
         const response = await axios.post(URL, values);
         if (response.status === 201) {
-          navigate("/login"); // Redirect to login page
+          navigate("/signupVerification"); // Redirect to login page
         } else {
           console.error("Sign up failed:", response.data);
         }

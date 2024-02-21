@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import SignUp from "./Components/authentication/SignUp";
+import SignUp from "./Components/authentication/signupVerifyAndSignup/SignUp";
 import Login from "./Components/authentication/Login";
 import Dashboard from "./Components/Dashboard";
 import OTPVerification from "./Components/authentication/OTPVerification";
@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import VerifyOTP from "./Components/authentication/signupVerifyAndSignup/VerifyOTP ";
 
 const App = () => {
- 
+
 
   return (
     <>
@@ -36,15 +36,9 @@ const App = () => {
         <Route path="/resetEmail" element={<EmailReset />} />
         <Route path="/OTP" element={<OTPVerification />} />
         <Route path="/signupVerification" element={<VerifyOTP />} />
-        {/* Routes accessible after authentication */}
-        {/* {authenticated && (
-          <> */}
-            <Route path="/dashboard" element={<Dashboard />}/> 
-          {/* </>
-        )} */}
 
-        {/* Redirect unauthorized users to sign-in page */}
-        {/* {!authenticated && <Route path="*" element={<Navigate to="/login" />} />} */}
+        <Route path="/dashboard" element={<Dashboard />} />
+
       </Routes>
     </>
   );
