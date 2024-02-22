@@ -16,7 +16,7 @@ const Login = () => {
     onSubmit: async (values) => {
       try {
         const response = await axios.post(URL, values);
-        if (response.status === 200) {
+        if (response.data.status === true) {
           // setAuthenticated(true); // Set authenticated status to true
           localStorage.setItem("token", response.data.token); // Store the JWT token in local storage
           toast.success("Login successful");

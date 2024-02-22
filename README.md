@@ -1,0 +1,2 @@
+after deploy to vercel when you refreash and you are getting the issue of site not found after :
+go back to your main.jsx and change the import path of the component from <BrowserRouter> to <HashRouter>

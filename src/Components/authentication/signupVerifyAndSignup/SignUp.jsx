@@ -20,7 +20,7 @@ const SignUp = () => {
       try {
         const response = await axios.post(URL, values);
         if (response.status === 201) {
-          navigate("/signupVerification"); // Redirect to login page
+          navigate("/signupVerification"); 
         } else {
           console.error("Sign up failed:", response.data);
         }

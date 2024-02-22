@@ -42,13 +42,13 @@ const Dashboard = () => {
         }
       }, 3000);
 
+      verifyToken();
 
-
-      const interval = setInterval(verifyToken, 2000);
-      return () => {
-        clearInterval(interval);
-        clearTimeout(timeout);
-    }
+    //   const interval = setInterval(verifyToken, 2000);
+    //   return () => {
+    //     clearInterval(interval);
+    //     clearTimeout(timeout);
+    // }
 
 
 
