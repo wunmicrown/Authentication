@@ -50,21 +50,22 @@ const OTPVerification = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
+      <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
         <h2 className="text-center text-2xl font-bold mb-4">Email Verification</h2>
         <p className="text-center text-gray-600 mb-4">We have sent a code to your email.</p>
-        <form >
-          <div className="flex flex-row gap-6">
+        <form>
+          <div className="flex flex-row gap-2 justify-center"> {/* Adjust the gap and justify-center */}
             <OtpInput
               value={otpCodes}
               onChange={(e) => setOtpCodes(e)}
-              numInputs={4}
+              numInputs={6}
               containerStyle="px-2 sm:px-0 text-3xl"
               shouldAutoFocus={true}
-              inputStyle="bg-slate-50 shadow-md focus:outline-none rounded-xl min-w-12 sm:min-w-16 min-h-12 sm:min-h-16"
-              renderSeparator={<span className="mx-2 sm:mx-3 bg-slate-50"></span>}
+              inputStyle="bg-slate-50 shadow-md focus:outline-none rounded-xl w-12 h-12 sm:w-16 sm:h-16" // Adjust width and height
+              renderSeparator={<span className="mx-2 w- sm:mx-3 bg-slate-50"></span>}
               renderInput={(props) => <input {...props} />}
             />
+
           </div>
           <button type="submit" onClick={handleSubmit} className="bg-blue-500 w-full text-white py-2 px-4 rounded-md mt-4">
             Verify Account
@@ -75,6 +76,9 @@ const OTPVerification = () => {
         </p>
       </div>
     </div>
+
+
+
   );
 };
 

@@ -25,40 +25,35 @@ const PasswordReset = () => {
   }
 
   const handleSubmit = async () => {
-    // console.log(data);
     if (data.confirmPassword === data.newPassword) {
-      if (data.newPassword < 6) {
-        setmessage('password must be at least 6 characters long');
+      if (data.newPassword.length <= 6) { 
+        setmessage('Password must be at least 6 characters long'); 
       } else {
-        setmessage('')
-        if (data.termsAccepted === false) {
-          setmessage('please accept terms and conditions');
+        setmessage('');
+        if (!data.termsAccepted) {
+          setmessage('Please accept terms and conditions');
         } else {
-          setmessage('')
+          setmessage('');
           try {
-            await axios.post(URL, data)
-              .then((res) => {
-                // console.log(res);
-                if (res.status ===200) {
-                  setmesOtp(res.data)
-                  toast.success(res.data)
-                  navigate("/login")
-                } else {
-                  
-                }
-              }).catch((err) => {
-                console.log(err);
-              })
+            const res = await axios.post(URL, data);
+            if (res.status === 200) {
+              
+              setmesOtp(res.data.message); 
+              toast.success(res.data.message); 
+              navigate("/login");
+            } else {
+              
+            }
           } catch (error) {
             console.log(error);
           }
         }
       }
     } else {
-      setmessage('password dit not macth');
+      setmessage('Passwords do not match');
     }
-
-  }
+  };
+  
 
   return (
     <div className="flex justify-center items-center h-screen">

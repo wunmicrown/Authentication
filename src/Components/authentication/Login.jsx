@@ -16,20 +16,24 @@ const Login = () => {
     onSubmit: async (values) => {
       try {
         const response = await axios.post(URL, values);
-        if (response.data.status === true) {
-          // setAuthenticated(true); // Set authenticated status to true
-          localStorage.setItem("token", response.data.token); // Store the JWT token in local storage
+        if (response.status === 200 && response.data.status === true) {
+          localStorage.setItem("token", response.data.token);
           toast.success("Login successful");
-          navigate("/dashboard"); // Redirect to dashboard page
+          navigate("/dashboard");
         } else {
-          console.error("Login failed:", response.data);
-          toast.error("Invalid email or password");
+          console.error("Login failed:", response.data.message);
+          toast.error(response.data.message);
         }
       } catch (error) {
         console.error("Login failed:", error);
-        toast.error("Invalid email or password");
+        if (error.response && error.response.status === 404) {
+          toast.error("User not found"); // Display a message for user not found
+        } else {
+          toast.error("Login failed. Please try again later.");
+        }
       }
-    },
+    }
+    ,
   });
 
   return (

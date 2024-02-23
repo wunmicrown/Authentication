@@ -36,7 +36,7 @@ const handleSubmit = async (e)  => {
         <div className="flex items-center border-b border-gray-300 mb-4">
           {/* <AiOutlineMail className="text-gray-500" /> */}
           <input
-            type="text"
+            type="email"
             onChange={(e) => setemail(e.target.value)}
             placeholder="Email address or mobile number"
             className="flex-1 mr-2 border-none focus:outline-none bg-slate-200 rounded-lg w-[444px] p-3"
