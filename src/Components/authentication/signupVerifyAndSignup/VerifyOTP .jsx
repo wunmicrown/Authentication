@@ -9,7 +9,7 @@ const VerifyOTP = ({ email }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [resendLoading, setResendLoading] = useState(false);
-    const URL = `${API_URL}/signupVerify`;
+    const URL = `${API_URL}/api/auth/signupVerify`;
 
     const formik = useFormik({
         initialValues: {

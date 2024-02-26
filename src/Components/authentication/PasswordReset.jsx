@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { API_URL } from "../constants/Api";
 
 const PasswordReset = () => {
-  const URL = `${API_URL}/resetpassword`;
+  const URL = `${API_URL}/api/auth/resetpassword`;
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const email = params.get("email");
@@ -88,17 +88,17 @@ const PasswordReset = () => {
           />
           {/* <span className="text-red-500">{errors.confirmPassword}</span> */}
         </div>
-        <div className="mb-4">
-          <input
-            type="checkbox"
-            id="termsAccepted"
-            name="termsAccepted"
-            className="mr-2"
-            onChange={handleChange}
-            checked={data.termsAccepted}
-          />
-          <label htmlFor="termsAccepted" className="text-sm text-gray-700">I accept the Terms and Conditions</label>
-        </div>
+          <div className="mb-4">
+            <input
+              type="checkbox"
+              id="termsAccepted"
+              name="termsAccepted"
+              className="mr-2"
+              onChange={handleChange}
+              checked={data.termsAccepted}
+            />
+            <label htmlFor="termsAccepted" className="text-sm text-gray-700">I accept the Terms and Conditions</label>
+          </div>
         <button onClick={handleSubmit} type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md">
           Reset Password
         </button>

@@ -4,15 +4,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { API_URL } from "../constants/Api";
+import { loginSchema } from "../validationSchema/loginSchema";
 
 const Login = () => {
-  const URL = `${API_URL}/signin`;
+  const URL = `${API_URL}/api/auth/signin`;
   const navigate = useNavigate();
   const loginFormik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
+   loginSchema,
+
     onSubmit: async (values) => {
       try {
         const response = await axios.post(URL, values);

@@ -10,8 +10,8 @@ const OTPVerification = () => {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const email = params.get("email");
-  const URL = `${API_URL}/verifyOTP`;
-  const urlReset = `${API_URL}/resendOTP`;
+  const URL = `${API_URL}/api/auth/verifyOTP`;
+  const urlReset = `${API_URL}/api/auth/resendOTP`;
   const [otpCodes, setOtpCodes] = useState('');
   const data = {
     email: email,

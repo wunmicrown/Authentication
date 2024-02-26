@@ -7,7 +7,7 @@ import { API_URL } from "../constants/Api";
 
 
 const EmailReset = () => {
-  const URL = `${API_URL}/resetEmail`
+  const URL = `${API_URL}/api/auth/resetEmail`
   const [data, setdata] = useState('')
   const [email, setemail] = useState('')
 const navigate = useNavigate();
@@ -34,7 +34,6 @@ const handleSubmit = async (e)  => {
         <h1 className="text-3xl font-bold mb-4">Find Your Account</h1>
         <p className="mb-4">Please enter your email address or mobile number to search for your account.</p>
         <div className="flex items-center border-b border-gray-300 mb-4">
-          {/* <AiOutlineMail className="text-gray-500" /> */}
           <input
             type="email"
             onChange={(e) => setemail(e.target.value)}
