@@ -17,8 +17,9 @@ const PasswordReset = () => {
     email: email,
     newPassword: '',
     confirmPassword: '',
-    termsAccepted: false
+    termsAccepted: false,
   })
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setdata({ ...data, [name]: value });
@@ -91,7 +92,6 @@ const PasswordReset = () => {
           <div className="mb-4">
             <input
               type="checkbox"
-              id="termsAccepted"
               name="termsAccepted"
               className="mr-2"
               onChange={handleChange}
