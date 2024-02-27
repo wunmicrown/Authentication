@@ -5,63 +5,46 @@ import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true)
-  const [tokenMatch, setTokenMatch] = useState(false)
-  const URL = `${API_URL}/uploadFile`;
-  const [myFile, setMyFile] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [tokenMatch, setTokenMatch] = useState(false);
   const [data, setData] = useState("");
-  let token = localStorage.getItem('token')
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    const verifyToken = () => {
-      axios.post(`${API_URL}/verifyToken`, { token })
-        .then((res) => {
-          console.log(res);
-          if (token === res.data.token) {
-            setLoading(false)
-            setTokenMatch(true)
-          } else {
-            console.log("Token doesn't match");
-            setTokenMatch(false)
-            setLoading(true)
-            navigate('/login')
-          }
-        }).catch((err) => {
-          console.log('Error verifying token', err);
-          setTokenMatch(false);
-          setTokenMatch(false)
-        });
-
-      }
-
-
-      const timeout = setTimeout(() => {
-        if (loading) {
+    const verifyToken = async () => {
+      try {
+        const response = await axios.post(`${API_URL}/api/auth/verifyToken`, { token });
+        if (response.status === 200 && response.data.token === token) {
           setLoading(false);
-          clearTimeout(timeout);
+          setTokenMatch(true);
+        } else {
+          console.log("Token doesn't match or verification failed");
+          setLoading(false);
+          setTokenMatch(false);
+          navigate('/login');
         }
-      }, 3000);
+      } catch (error) {
+        console.log('Error verifying token:', error);
+        setLoading(false);
+        setTokenMatch(false);
+        navigate('/login');
+      }
+    };
 
-      verifyToken();
+    verifyToken();
 
-    //   const interval = setInterval(verifyToken, 2000);
-    //   return () => {
-    //     clearInterval(interval);
-    //     clearTimeout(timeout);
-    // }
+  }, [token, navigate]);
 
-
-
-  }, [navigate, loading]);
-
+  // Render loading state
   if (loading) {
-    return <h1>Loading...</h1>
+    return <h1>Loading...</h1>;
   }
+
+  // Redirect if token doesn't match or loading failed
   if (!tokenMatch) {
     navigate('/login');
     return null;
   }
-
 
   
 

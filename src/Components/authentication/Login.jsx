@@ -9,34 +9,34 @@ import { loginSchema } from "../validationSchema/loginSchema";
 const Login = () => {
   const URL = `${API_URL}/api/auth/signin`;
   const navigate = useNavigate();
+
   const loginFormik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
-   loginSchema,
-
+    loginSchema,
     onSubmit: async (values) => {
       try {
         const response = await axios.post(URL, values);
-        if (response.status === 200 ) {
-          localStorage.setItem("token", response.data.token);
-          toast.success("Login successful");
-          navigate("/dashboard");
+        if (response.status === 200) {
+          console.log(response);
+          localStorage.setItem('token', response.data.token);
+          toast.success('Login successful');
+          navigate('/dashboard');
         } else {
-          console.error("Login failed:", response.data.message);
+          console.error('Login failed:', response.data.message);
           toast.error(response.data.message);
         }
       } catch (error) {
-        console.error("Login failed:", error);
+        console.error('Login failed:', error);
         if (error.response && error.response.status === 404) {
-          toast.error("User not found"); // Display a message for user not found
+          toast.error('User not found');
         } else {
-          toast.error("Incorrect password or email");
+          toast.error('Incorrect password or email');
         }
       }
-    }
-    ,
+    },
   });
 
   return (
