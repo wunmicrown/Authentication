@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../constants/Api';
+import { toast } from 'react-toastify';
 
 const VerifyOTP = ({ email }) => {
     const navigate = useNavigate();
@@ -21,8 +22,8 @@ const VerifyOTP = ({ email }) => {
             setError('');
             axios.post(URL, values)
                 .then(response => {
-                    console.log(response);
                     if (response.data.status == true) {
+                        toast.success("OTP verified successfully");
                         navigate('/login');
                     }else{
                         console.log("error ooo");
@@ -30,6 +31,7 @@ const VerifyOTP = ({ email }) => {
                 })
                 .catch(error => {
                     setError(error.response?.data?.message || 'Verification failed');
+                    toast.error(error.response?.data?.message || 'Verification failed');
                 })
                 .finally(() => {
                     setLoading(false);

@@ -26,7 +26,7 @@ const PasswordReset = () => {
   }
 
   const handleSubmit = async () => {
-    if (data.confirmPassword === data.newPassword) {
+    if (data.newPassword === data.confirmPassword) {
       if (data.newPassword.length <= 6) { 
         setmessage('Password must be at least 6 characters long'); 
       } else {

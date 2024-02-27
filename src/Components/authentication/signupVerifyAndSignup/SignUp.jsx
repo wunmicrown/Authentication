@@ -14,7 +14,9 @@ const SignUp = () => {
     try {
       const response = await axios.post(URL, values);
       if (response.status === 201) {
+        toast.success("User registered successfully. Verification OTP sent to email.");
         navigate("/signupVerification");
+
       } else {
         console.log(response.data.message);
         throw new Error(response.data.message);

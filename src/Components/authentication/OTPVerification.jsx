@@ -19,23 +19,24 @@ const OTPVerification = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(otpCodes);
-    axios.post(URL, data)
-      .then((res) => {
-        setmesOtp(res.data)
-        toast.success(res.data)
-        if (res.status === 400) {
-          // console.log(res);
-          setmessege('enter a correct otp code')
-        }
-        if (res.status === 200) {
-          console.log(res);
-          navigate(`/resetpassword?email=${email}`)
-        }
-      }).catch((err) => {
-        console.log(err);
-      })
+    try {
+      const response = await axios.post(URL, data);
+      if (response.status === 200) {
+        toast.success("OTP verified successfully");
+        navigate(`/resetpassword?email=${email}`);
+      } else if (response.status === 400) {
+        toast.error("Invalid OTP. Please enter the correct code.");
+      } else {
+        // Handle other status codes if needed
+        toast.error("An error occurred while verifying OTP. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error verifying OTP:", error);
+      toast.error("An error occurred while verifying OTP. Please try again later.");
+    }
   };
+  
+  
 
   const handleResendOTP = async () => {
     try {

@@ -19,7 +19,7 @@ const Login = () => {
     onSubmit: async (values) => {
       try {
         const response = await axios.post(URL, values);
-        if (response.status === 200 && response.data.status === true) {
+        if (response.status === 200 ) {
           localStorage.setItem("token", response.data.token);
           toast.success("Login successful");
           navigate("/dashboard");
@@ -32,7 +32,7 @@ const Login = () => {
         if (error.response && error.response.status === 404) {
           toast.error("User not found"); // Display a message for user not found
         } else {
-          toast.error("Login failed. Please try again later.");
+          toast.error("Incorrect password or email");
         }
       }
     }
