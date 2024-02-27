@@ -13,5 +13,12 @@ export const loginSchema = yup.object({
       /^[a-zA-Z0-9]{8,}$/,
       "Password must be at least 8 characters long and contain only letters and numbers"
     ),
-
+confirmPassword: yup 
+    .string()
+    .oneOf([yup.ref('newPassword'), null], 'Passwords must match')
+    .matches(
+      /^[a-zA-Z0-9]{8,}$/,
+      "Confirm password must be at least 8 characters long and contain only letters and numbers"
+    )
+    .required("Confirm password is required"),
 });

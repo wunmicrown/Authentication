@@ -10,51 +10,56 @@ const PasswordReset = () => {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const email = params.get("email");
-  const [message, setmessage] = useState("");
-  const [mesotp, setmesOtp] = useState('')
-
-  const [data, setdata] = useState({
+  const [message, setMessage] = useState('');
+  const [data, setData] = useState({
     email: email,
     newPassword: '',
     confirmPassword: '',
     termsAccepted: false,
-  })
+  });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setdata({ ...data, [name]: value });
+    const { name, value, type, checked } = e.target;
+    setData(prevData => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? checked : value
+    }));
   }
 
-  const handleSubmit = async () => {
-    if (data.newPassword === data.confirmPassword) {
-      if (data.newPassword.length <= 6) { 
-        setmessage('Password must be at least 6 characters long'); 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (data.newPassword !== data.confirmPassword) {
+      setMessage('Passwords do not match');
+      return;
+    }
+    if (data.newPassword.length < 6) {
+      setMessage('Password must be at least 6 characters long');
+      return;
+    }
+    if (!data.termsAccepted) {
+      setMessage('Please accept terms and conditions');
+      return;
+    }
+
+    try {
+      const res = await axios.post(URL, data);
+      if (res.status === 200) {
+        setMessage(res.data.message);
+        toast.success(res.data.message);
+        navigate("/login");
       } else {
-        setmessage('');
-        if (!data.termsAccepted) {
-          setmessage('Please accept terms and conditions');
-        } else {
-          setmessage('');
-          try {
-            const res = await axios.post(URL, data);
-            if (res.status === 200) {
-              
-              setmesOtp(res.data.message); 
-              toast.success(res.data.message); 
-              navigate("/login");
-            } else {
-              
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        }
+        // Handle other status codes if needed
       }
-    } else {
-      setmessage('Passwords do not match');
+    } catch (error) {
+      console.error(error);
+      if (error.response && error.response.status === 400) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('An error occurred. Please try again later.');
+      }
     }
   };
-  
+
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -63,7 +68,7 @@ const PasswordReset = () => {
           <BsShieldLock className="inline-block text-blue-500 text-4xl mr-2" />
           Change Password
         </div>
-          {message && <p className="text-red-500 text-center mb-4">{message}</p>}
+        {message && <p className="text-red-500 text-center mb-4">{message}</p>}
         {/* <form onSubmit={handleSubmit}> */}
         <div className="mb-4">
           <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700">New Password</label>
@@ -89,16 +94,16 @@ const PasswordReset = () => {
           />
           {/* <span className="text-red-500">{errors.confirmPassword}</span> */}
         </div>
-          <div className="mb-4">
-            <input
-              type="checkbox"
-              name="termsAccepted"
-              className="mr-2"
-              onChange={handleChange}
-              checked={data.termsAccepted}
-            />
-            <label htmlFor="termsAccepted" className="text-sm text-gray-700">I accept the Terms and Conditions</label>
-          </div>
+        <div className="mb-4">
+          <input
+            type="checkbox"
+            name="termsAccepted"
+            className="mr-2"
+            onChange={handleChange}
+            checked={data.termsAccepted}
+          />
+          <label htmlFor="termsAccepted" className="text-sm text-gray-700">I accept the Terms and Conditions</label>
+        </div>
         <button onClick={handleSubmit} type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md">
           Reset Password
         </button>

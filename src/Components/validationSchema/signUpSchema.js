@@ -25,5 +25,4 @@ export const validationSchema = yup.object({
       "Password must be at least 8 characters long and contain only letters and numbers"
     ),
 
-
 });
