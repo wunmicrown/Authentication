@@ -10,7 +10,7 @@ const VerifyOTP = ({ email }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [resendLoading, setResendLoading] = useState(false);
-    const URL = `${API_URL}/api/auth/signupVerify`;
+    const URL = `${API_URL}/v1/auth/signupVerify`;
 
     const formik = useFormik({
         initialValues: {
@@ -66,7 +66,7 @@ const VerifyOTP = ({ email }) => {
                             onChange={formik.handleChange}
                             value={formik.values.otp}
                             placeholder="Enter OTP"
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="bg-white focus:border-blue-500 rounded-lg shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                         <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline" disabled={loading}>
                             {loading ? 'Verifying...' : 'Verify'}

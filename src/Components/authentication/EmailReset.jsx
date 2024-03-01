@@ -7,7 +7,7 @@ import { API_URL } from "../constants/Api";
 
 
 const EmailReset = () => {
-  const URL = `${API_URL}/api/auth/resetEmail`
+  const URL = `${API_URL}/v1/auth/resetEmail`
   const [data, setdata] = useState('')
   const [email, setemail] = useState('')
 const navigate = useNavigate();

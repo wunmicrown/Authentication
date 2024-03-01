@@ -7,20 +7,17 @@ import { validationSchema } from "../../validationSchema/signUpSchema";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
-  const URL = `${API_URL}/api/auth/signup`;
+  const URL = `${API_URL}/v1/auth/signup`;
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     try {
       const response = await axios.post(URL, values);
-      if (response.status === 201) {
-        toast.success("User registered successfully. Verification OTP sent to email.");
-        navigate("/signupVerification");
+      console.log(response);
+      localStorage.setItem('userDetails', JSON.stringify(response.data.user));
 
-      } else {
-        console.log(response.data.message);
-        throw new Error(response.data.message);
-      }
+      toast.success("User registered successfully. Verification OTP sent to email.");
+      navigate("/signupVerification");
     } catch (error) {
       toast.error(`Sign up failed: ${error.response.data}`);
     }
@@ -50,7 +47,7 @@ const SignUp = () => {
               onChange={handleChange}
               value={values.firstName}
               placeholder="First Name"
-              className="mt-1 p-2 flex-grow shadow-sm outline-none bg-white"
+              className="bg-white focus:border-blue-400 rounded-lg shadow-sm appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
           <span className="text-red-500">{errors.firstName}</span>
@@ -64,7 +61,7 @@ const SignUp = () => {
               onChange={handleChange}
               value={values.lastName}
               placeholder="Last Name"
-              className="mt-1 p-2 flex-grow shadow-sm outline-none bg-white"
+              className="bg-white focus:border-blue-400 rounded-lg shadow-sm appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
           <span className="text-red-500">{errors.lastName}</span>
@@ -78,7 +75,7 @@ const SignUp = () => {
               onChange={handleChange}
               value={values.email}
               placeholder="Email Address"
-              className="mt-1 p-2 flex-grow shadow-sm outline-none bg-white"
+              className="bg-white focus:border-blue-400 rounded-lg shadow-sm appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
           <span className="text-red-500">{errors.email}</span>
@@ -92,7 +89,7 @@ const SignUp = () => {
               onChange={handleChange}
               value={values.password}
               placeholder="Password"
-              className="mt-1 p-2 flex-grow shadow-sm outline-none bg-white  rounded-md"
+              className="bg-white focus:border-blue-400 rounded-lg shadow-sm appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
           <span className="text-red-500">{errors.password}</span>

@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@media screen and (max-width: 640px) {
+  .otp-input {
+    width: 10vh; /* Adjust width for smaller screens */
+    height: 10vh; /* Adjust height for smaller screens */
+  }
+}

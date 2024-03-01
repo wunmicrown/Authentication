@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { API_URL } from "../constants/Api";
 
 const PasswordReset = () => {
-  const URL = `${API_URL}/api/auth/resetpassword`;
+  const URL = `${API_URL}/v1/auth/resetpassword`;
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const email = params.get("email");
@@ -77,7 +77,7 @@ const PasswordReset = () => {
             name="newPassword"
             onChange={handleChange}
             value={data.newPassword}
-            className="border rounded-md p-2 shadow-sm w-full"
+            className="bg-white focus:border-blue-400 rounded-lg shadow-sm appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter new password"
           />
           {/* <span className="text-red-500">{errors.newPassword}</span> */}
@@ -89,7 +89,7 @@ const PasswordReset = () => {
             name="confirmPassword"
             onChange={handleChange}
             value={data.confirmPassword}
-            className="border rounded-md p-2 shadow-sm w-full"
+            className="bg-white focus:border-blue-400 rounded-lg shadow-sm appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Confirm new password"
           />
           {/* <span className="text-red-500">{errors.confirmPassword}</span> */}

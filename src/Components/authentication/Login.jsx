@@ -7,7 +7,7 @@ import { API_URL } from "../constants/Api";
 import { loginSchema } from "../validationSchema/loginSchema";
 
 const Login = () => {
-  const URL = `${API_URL}/api/auth/signin`;
+  const URL = `${API_URL}/v1/auth/signin`;
   const navigate = useNavigate();
 
   const loginFormik = useFormik({
@@ -18,17 +18,16 @@ const Login = () => {
     loginSchema,
     onSubmit: async (values) => {
       try {
-        const response = await axios.post(URL, values);
-        if (response.status === 200) {
-          console.log(response);
-          localStorage.setItem('token', response.data.token);
+        const {data} = await axios.post(URL, values);
+    
+          console.log(data);
+          localStorage.setItem('token',data.token);
+          localStorage.setItem('user', JSON.stringify(data._user));
           toast.success('Login successful');
           navigate('/dashboard');
-        } else {
-          console.error('Login failed:', response.data.message);
-          toast.error(response.data.message);
-        }
-      } catch (error) {
+        } 
+      catch (error) {
+        toast.error(response.data.message);
         console.error('Login failed:', error);
         if (error.response && error.response.status === 404) {
           toast.error('User not found');
@@ -55,7 +54,7 @@ const Login = () => {
               onChange={loginFormik.handleChange}
               value={loginFormik.values.email}
               autoComplete="username"
-              className="mt-1 p-2 flex-grow shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+              className="mt-1 p-2 flex-grow shadow bg-white  focus:border-blue-500 rounded-lg"
               placeholder="Email Address"
             />
           </div>
@@ -72,7 +71,7 @@ const Login = () => {
               type="password"
               onChange={loginFormik.handleChange}
               value={loginFormik.values.password}
-              className="mt-1 p-2 flex-grow shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-blue-500 rounded-md"
+              className="mt-1 p-2 flex-grow shadow bg-white focus:border-blue-500 rounded-lg"
               placeholder="Password"
               autoComplete="current-password"
             />
