@@ -55,9 +55,9 @@ const Dashboard = () => {
     {/* <Navbar/> */}
       <h1 className="text-3xl font-bold text-center mt-4">Dashboard</h1>
       <div className="mt-4 bg-red-700">
-        <h1 className="text-2xl font-bold">{data.message}</h1>
+        <h1 className="text-2xl font-bold">{data.firstName}</h1>
+        <h1 className="text-2xl font-bold">{data.lastName}</h1>
         <p className="text-lg">{data.email}</p>
-        <p className="text-lg">OTP: {data.otp}</p>
       </div>
     </>
   );

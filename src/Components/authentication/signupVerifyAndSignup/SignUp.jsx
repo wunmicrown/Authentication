@@ -17,7 +17,7 @@ const SignUp = () => {
       localStorage.setItem('userDetails', JSON.stringify(response.data.user));
 
       toast.success("User registered successfully. Verification OTP sent to email.");
-      navigate("/signupVerification");
+      navigate("/verifyEmail");
     } catch (error) {
       toast.error(`Sign up failed: ${error.response.data}`);
     }

@@ -18,25 +18,36 @@ const Login = () => {
     loginSchema,
     onSubmit: async (values) => {
       try {
-        const {data} = await axios.post(URL, values);
-    
-          console.log(data);
-          localStorage.setItem('token',data.token);
-          localStorage.setItem('user', JSON.stringify(data._user));
+        const { data } = await axios.post(URL, values);
+
+        console.log(data);
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        // Redirect to dashboard if email is verified
+        if (data.user?.emailVerified) {
+
           toast.success('Login successful');
-          navigate('/dashboard');
-        } 
+          return navigate('/dashboard');
+
+        }
+        // Redirect to verify email page if email is not verified
+        toast.warning('Please verify your email before accessing the dashboard');
+        navigate('/verifyEmail');
+
+      }
       catch (error) {
         toast.error(response.data.message);
         console.error('Login failed:', error);
         if (error.response && error.response.status === 404) {
-          toast.error('User not found');
+          toast.error(error.response.message);
         } else {
           toast.error('Incorrect password or email');
         }
       }
     },
+
   });
+
 
   return (
     <div className="max-w-md mx-auto mt-20">

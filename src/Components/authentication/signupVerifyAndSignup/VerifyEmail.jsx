@@ -5,52 +5,58 @@ import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../constants/Api';
 import { toast } from 'react-toastify';
 
-const VerifyOTP = ({ email }) => {
+const VerifyEmail = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [resendLoading, setResendLoading] = useState(false);
-    const URL = `${API_URL}/v1/auth/signupVerify`;
+    const URL = `${API_URL}/v1/auth/verifyEmail`;
 
     const formik = useFormik({
         initialValues: {
-            otp: '',
-            email: email
+            otp: ''
         },
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             setLoading(true);
             setError('');
-            axios.post(URL, values)
-                .then(response => {
-                    if (response.data.status == true) {
-                        toast.success("OTP verified successfully");
-                        navigate('/login');
-                    }else{
-                        console.log("error ooo");
-                    }
-                })
-                .catch(error => {
-                    setError(error.response?.data?.message || 'Verification failed');
-                    toast.error(error.response?.data?.message || 'Verification failed');
-                })
-                .finally(() => {
-                    setLoading(false);
-                });
+    
+            const savedUser = localStorage.getItem('user');
+            if (!savedUser) return navigate("/login");
+            const { email } = JSON.parse(savedUser);
+            if (!email) return navigate("/login");
+    
+            try {
+                const response = await axios.post(URL, { ...values, email });
+                    console.log(response);
+    if (response.data.user.emailVerified) {
+        navigate('/dashboard');
+        toast.success("OTP verified successfully");
+    } else {
+        // Email not verified
+        navigate('/login'); // Navigate back to login
+        toast.error("Email verification failed");
+    }
+            } catch (error) {
+                setError(error.response?.data?.message || 'Verification failed');
+                toast.error(error.response?.data?.message || 'Verification failed');
+            } finally {
+                setLoading(false);
+            }
         },
     });
 
     const handleResendOTP = () => {
         setResendLoading(true);
         axios.post(`${API_URL}/resendSignupOTP`, { email })
-            .then(() => {
-                alert('OTP has been resent successfully!');
-            })
-            .catch(() => {
-                alert('Failed to resend OTP. Please try again later.');
-            })
-            .finally(() => {
-                setResendLoading(false);
-            });
+        .then(() => {
+            alert('OTP has been resent successfully!');
+        })
+        .catch(() => {
+            alert('Failed to resend OTP. Please try again later.');
+        })
+        .finally(() => {
+            setResendLoading(false);
+        });
     };
 
     return (
@@ -82,4 +88,4 @@ const VerifyOTP = ({ email }) => {
     );
 };
 
-export default VerifyOTP;
+export default VerifyEmail;

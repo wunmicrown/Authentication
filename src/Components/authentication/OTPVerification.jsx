@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import { API_URL } from "../constants/Api";
 
 const OTPVerification = () => {
-  const [mesotp, setmesOtp] = useState('')
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const email = params.get("email");
@@ -35,8 +34,8 @@ const OTPVerification = () => {
       toast.error("An error occurred while verifying OTP. Please try again later.");
     }
   };
-  
-  
+
+
 
   const handleResendOTP = async () => {
     try {
@@ -50,51 +49,51 @@ const OTPVerification = () => {
 
 
   return (
-   <>
- <div className="flex justify-center items-center h-screen mt-10">
-      <div className="bg-white p-8 rounded-lg shadow-md ">
-        <h2 className="text-center text-2xl font-bold mb-4">Email Verification</h2>
-        <p className="text-center text-gray-600 mb-4">We have sent a code to your email.</p>
-        <form className=" w-full justify-center">
-          <div className="flex justify-center">
-          <OtpInput
-  value={otpCodes}
-  onChange={(e) => setOtpCodes(e)}
-  numInputs={6}
-  containerStyle="px-2 sm:px-0 text-3xl"
-  shouldAutoFocus={true}
-  inputStyle={{ 
-    backgroundColor: "#D1D5DB", 
-    boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)", 
-    outline: "none", 
-    borderRadius: "10px", 
-    width: "6vw", // Default width
-    height: "6vw", // Default height
-    fontSize: "2rem", // Adjust font size
-    textAlign: "center", // Center text
-    "@screen sm": {
-      width: "20vw", // Responsive width for smaller screens (same as larger screens)
-      height: "20vw", // Responsive height for smaller screens (same as larger screens)
-    }
-  }}
-  className="sm:w-!28 md:w-28 sm:h-28"
-  renderSeparator={<span className="mx-2    sm:mx-3 bg-slate-50"></span>}
-  renderInput={(props) => <input {...props} />}
-/>
+    <>
+      <div className="flex justify-center items-center h-screen mt-10">
+        <div className="bg-white p-8 rounded-lg shadow-md ">
+          <h2 className="text-center text-2xl font-bold mb-4">Email Verification</h2>
+          <p className="text-center text-gray-600 mb-4">We have sent a code to your email.</p>
+          <form className=" w-full justify-center">
+            <div className="flex justify-center">
+              <OtpInput
+                value={otpCodes}
+                onChange={(e) => setOtpCodes(e)}
+                numInputs={6}
+                containerStyle="px-2 sm:px-0 text-3xl"
+                shouldAutoFocus={true}
+                inputStyle={{
+                  backgroundColor: "#D1D5DB",
+                  boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+                  outline: "none",
+                  borderRadius: "10px",
+                  width: "6vw", // Default width
+                  height: "6vw", // Default height
+                  fontSize: "2rem", // Adjust font size
+                  textAlign: "center", // Center text
+                  "@screen sm": {
+                    width: "20vw", // Responsive width for smaller screens (same as larger screens)
+                    height: "20vw", // Responsive height for smaller screens (same as larger screens)
+                  }
+                }}
+                className="sm:w-!28 md:w-28 sm:h-28"
+                renderSeparator={<span className="mx-2    sm:mx-3 bg-slate-50"></span>}
+                renderInput={(props) => <input {...props} />}
+              />
 
 
 
-          </div>
-          <button type="submit" onClick={handleSubmit} className="bg-blue-500 w-full text-white py-2 px-4 rounded-md mt-4">
-            Verify Account
-          </button>
-        </form>
-        <p className="text-center mt-2 cursor-pointer" onClick={handleResendOTP}>
-          Don't receive code? <span className="underline text-blue-500">Resend OTP</span>
-        </p>
+            </div>
+            <button type="submit" onClick={handleSubmit} className="bg-blue-500 w-full text-white py-2 px-4 rounded-md mt-4">
+              Verify Account
+            </button>
+          </form>
+          <p className="text-center mt-2 cursor-pointer" onClick={handleResendOTP}>
+            Don't receive code? <span className="underline text-blue-500">Resend OTP</span>
+          </p>
+        </div>
       </div>
-    </div>
-   </>
+    </>
 
 
 
