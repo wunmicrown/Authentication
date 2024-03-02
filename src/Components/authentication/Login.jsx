@@ -36,12 +36,11 @@ const Login = () => {
 
       }
       catch (error) {
-        toast.error(response.data.message);
         console.error('Login failed:', error);
         if (error.response && error.response.status === 404) {
-          toast.error(error.response.message);
+          toast.error(error.response.data.message);
         } else {
-          toast.error('Incorrect password or email');
+          toast.error('An error occurred while logging in');
         }
       }
     },
