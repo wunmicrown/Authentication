@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL } from "../constants/Api";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineEdit } from 'react-icons/ai';
+
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -67,9 +69,7 @@ const Dashboard = () => {
   return (
     <>
 
-      <main className="relative">
-        {/* Glass effect overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[ rgba(84, 87, 88, 0.5)] to-[rgba(105, 108, 108, 0.5)] mix-blend-overlay"></div>
+      <div className="relative  bg-slate-500">
 
         <nav className="bg-[#1D2021] z-10 sticky top-0 w-full pt-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -115,7 +115,7 @@ const Dashboard = () => {
         </nav>
 
 
-        <div className="flex flex-col md:flex-row lg:mx-auto md:justify-center md:items-center md:space-x-4 bg-[#272A2B] p-4">
+        <div className="flex flex-col md:flex-row lg:mx-auto md:justify-center md:items-center md:space-x-4 bg-[#272A2B] p-4 min-h-screen">
           <div className="w-full md:w-1/2">
             <button
               className="max-w-xs bg-[#861C44] rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white cursor-pointer mx-auto"
@@ -129,10 +129,14 @@ const Dashboard = () => {
                 alt=""
               />
             </button>
-            <div className="item-center border border-red-100 flex-col flex justify-center text-gray-300 text-center mt-4">
+            <div className="item-center flex-col flex justify-center text-gray-300 text-center mt-4">
               <h1 className="font-sans font-bold text-xl">{data.firstName} {data.lastName}</h1>
               <p>He/she</p>
               <p>{data.email}</p>
+              <div className="flex justify-center mt-3">
+                {/* Use the AiOutlineEdit icon */}
+                <AiOutlineEdit size={24} color="blue" />
+              </div>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center w-full md:w-1/2 mt-4 md:mt-0">
@@ -167,7 +171,7 @@ const Dashboard = () => {
             <p className="text-gray-300 ml-2 bg mt-2">© 2024 Authentication, Inc.</p>
           </div>
         </footer>
-      </main>
+      </div>
 
 
 
