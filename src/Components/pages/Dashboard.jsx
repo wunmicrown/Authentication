@@ -116,46 +116,60 @@ const Dashboard = () => {
 
 
         <div className="flex flex-col md:flex-row lg:mx-auto md:justify-center md:items-center md:space-x-4 bg-[#272A2B] p-4 min-h-screen">
-          <div className="w-full md:w-1/2">
-            <button
-              className="max-w-xs bg-[#861C44] rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white cursor-pointer mx-auto"
-              id="user-menu"
-              aria-haspopup="true"
-            >
-              <span className="sr-only">Open user menu</span>
-              <img
-                className="h-64 w-64 rounded-full"
-                // src={user.profilePicture} 
-                alt=""
-              />
-            </button>
-            <div className="item-center flex-col flex justify-center text-gray-300 text-center mt-4">
-              <h1 className="font-sans font-bold text-xl">{data.firstName} {data.lastName}</h1>
-              <p>He/she</p>
-              <p>{data.email}</p>
-              <div className="flex justify-center mt-3">
-                {/* Use the AiOutlineEdit icon */}
-                <AiOutlineEdit size={24} color="blue" />
+          <div className="w-full flex md:w-1/2 p-10 shadow-2xl min-h-s">
+            <div className="flex flex-col mx-auto space-y-4 w-52"> {/* Added mx-auto and space-y-4 for gap */}
+              <button
+                className="max-w-xs bg-[#861C44] rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white cursor-pointer"
+                id="user-menu"
+                aria-haspopup="true"
+              >
+                <span className="sr-only">Open user menu</span>
+                <img
+                  className="h-52 w-52 rounded-full"
+                  // src={user.profilePicture} 
+                  alt=""
+                />
+              </button>
+              <div className="item-center flex-col flex justify-center text-gray-300 text-center">
+                <div>
+                  <h1 className="font-sans font-bold text-xl">{data.firstName} {data.lastName}</h1>
+                  <p>He/she</p>
+                  <p>{data.email}</p>
+                  <div className="flex justify-center mt-3">
+                    {/* Use the AiOutlineEdit icon */}
+                    About Yourself
+                    <AiOutlineEdit size={24} color="blue" />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col items-center justify-center w-full md:w-1/2 mt-4 md:mt-0">
-            <input
-              type="file"
-              // onChange={(e) => changeFile(e)}
-              className="mb-4 w-32 focus:bg-slate-500 rounded outline-none"
-            />
-            <button
-              className="bg-slate-500 p-2 rounded-lg text-white mb-4"
-            // onClick={uploadFile}
-            >
-              Upload File
-            </button>
-            <div className="mb-4">
-              <p className="text-gray-300 font-bold">Bio</p>
-              <input type="text" width={500} height={500} className="bg-white-100 w-96 h-40 text-red-100" />
+            <div className="flex flex-col items-center justify-center w-full md:w-1/2 mt-4 md:mt-0">
+              <input
+                type="file"
+                // onChange={(e) => changeFile(e)}
+                className="mb-4 w-32 focus:bg-slate-500 rounded outline-none"
+              />
+              <button
+                className="bg-[#783E54] text-gray-300 p-2 rounded-lg mb-4"
+              // onClick={uploadFile}
+              >
+                Upload File
+              </button>
             </div>
-            <div>
+          </div>
+
+
+
+          <div className="flex flex-col items-center justify-center w-full md:w-1/2 mt-4 md:mt-0 shadow-xl p-5">
+
+            
+      
+
+            <div className="mb-4">
+              <p className="text-gray-300 font-bold mb-2">Bio</p>
+              <input type="text" width={500} height={500} className="bg-[#626565] w-96 h-40 text-red-100" />
+            </div>
+            <div className="ml-80">
               <button className="bg-green-700 text-gray-300 rounded border-none p-2 cursor-pointer">Save</button>
             </div>
           </div>

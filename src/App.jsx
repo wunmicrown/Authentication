@@ -7,7 +7,6 @@ import PasswordReset from "./Components/authentication/PasswordReset";
 import EmailReset from "./Components/authentication/EmailReset";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./Components/pages/Navbar";
 import VerifyEmail from "./Components/authentication/signupVerifyAndSignup/VerifyEmail";
 
 const App = () => {
@@ -36,7 +35,6 @@ const App = () => {
         <Route path="/resetEmail" element={<EmailReset />} />
         <Route path="/OTP" element={<OTPVerification />} />
         <Route path="/verifyEmail" element={<VerifyEmail />} />
-        <Route element={<Navbar/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
 
       </Routes>
