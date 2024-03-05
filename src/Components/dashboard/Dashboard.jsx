@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL } from "../constants/Api";
-import { useNavigate } from "react-router-dom";
-import { AiOutlineEdit } from 'react-icons/ai';
+import { Link, useNavigate } from "react-router-dom";
+import { AiOutlineEdit, AiOutlineMail, AiOutlineSetting } from 'react-icons/ai';
+import { BsShieldLock } from "react-icons/bs";
 
 
 const Dashboard = () => {
@@ -10,6 +11,8 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [tokenMatch, setTokenMatch] = useState(false);
   const [data, setData] = useState(null); // State to store user data
+  const [showDropdown, setShowDropdown] = useState(false); // State to control dropdown visibility
+
   const URL = `${API_URL}/auth/uploadProfilePic`
 
   useEffect(() => {
@@ -40,6 +43,11 @@ const Dashboard = () => {
 
   }, [navigate]);
 
+  // Function to handle toggling dropdown visibility
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
   // Render loading state
   if (loading) {
     return <h1>Loading...</h1>;
@@ -69,30 +77,33 @@ const Dashboard = () => {
   return (
     <>
 
-      <div className="relative  bg-slate-500">
+      <div className="relative  bg-slate-500 font-serif">
 
         <nav className="bg-[#1D2021] z-10 sticky top-0 w-full pt-4">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-18">
               <div className="flex items-center">
-                <div className="flex-shrink-0 flex justify-center mb-10">
-                  <img
-                    className="h-8 w-8 bg-b mt-2"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                    alt="Workflow"
-                  />
-                  <a
-                    href="#"
+                <div className="flex-shrink-0 flex justify-center mb-10 bg-red-600">
+                  <Link
+                    to={""}
+                  >
+                    <img
+                      className="h-8 w-8 bg-b mt-2"
+                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                      alt="Workflow"
+                    />
+                  </Link>
+                  <Link
+                    to="#"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-bold"
                   >
                     Welcome, {data.firstName}
-                  </a>
+                  </Link>
                 </div>
-
               </div>
-              <div className="">
+              <div className="flex items-center bg-red-600">
                 <div className="ml-4 flex items-center md:ml-6">
-                  <div className="ml-3 relative">
+                  <div className="mr-2 relative">
                     <div>
                       <button
                         className="max-w-xs bg-[#861C44] rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -108,11 +119,32 @@ const Dashboard = () => {
                       </button>
                     </div>
                   </div>
+                  <div className="ml-20 relative">
+                    <div>
+                      <button
+                        className="max-w-xs bg-[#861C44] rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                        id="settings-button"
+                        aria-haspopup="true"
+                        onClick={toggleDropdown} // Toggle the dropdown visibility
+                      >
+                        <span className="sr-only">Open settings menu</span>
+                        <AiOutlineSetting className="h-6 w-6 text-gray-300" /><span className="text-gray-300 font-bold font-serif">Settings</span>
+                      </button>
+                    </div>
+                    <div className={`dropdown-content shadow-lg bg-[#2e2c2c] rounded-lg mt-2 py-2 w-32 absolute z-10 ${showDropdown ? '' : 'hidden'}`}>
+                      <Link to={"/dashboard/changeEmail"} className=" px-4 py-2 flex text-[#b5bec3] hover:bg-[#474c53]"> <AiOutlineMail className="mt-1 mr-1" /> Emails</Link>
+                      <Link to={"/dashboard/ChangePassword"} className="flex px-4 py-2 text-[#b5bec3] hover:bg-[#474c53]">
+                        <BsShieldLock className="inline-block text-gray-300 text-4xl mr-2" />
+                        Change password</Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </nav>
+
+
 
 
         <div className="flex flex-col md:flex-row lg:mx-auto md:justify-center md:items-center md:space-x-4 bg-[#272A2B] p-4 min-h-screen">
@@ -162,12 +194,10 @@ const Dashboard = () => {
 
           <div className="flex flex-col items-center justify-center w-full md:w-1/2 mt-4 md:mt-0 shadow-xl p-5">
 
-            
-      
 
             <div className="mb-4">
               <p className="text-gray-300 font-bold mb-2">Bio</p>
-              <input type="text" width={500} height={500} className="bg-[#626565] w-96 h-40 text-red-100" />
+              <input type="text" width={500} height={500} className="bg-[#626565] w-96 h-40 focus:outline-none rounded-lg text-white font-bold hover:border border-blue-400" />
             </div>
             <div className="ml-80">
               <button className="bg-green-700 text-gray-300 rounded border-none p-2 cursor-pointer">Save</button>
