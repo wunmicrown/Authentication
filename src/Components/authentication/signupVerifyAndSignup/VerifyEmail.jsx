@@ -20,10 +20,10 @@ const VerifyEmail = () => {
             setLoading(true);
             setError('');
 
-            const savedUser = localStorage.getItem('userDetails');
+            const savedUser = localStorage.getItem('user');
             if (!savedUser) return navigate("/login");
             const { email } = JSON.parse(savedUser);
-            if (!email) return navigate("/login");
+            if (!email) return navigate("/login");  
 
             try {
                 const response = await axios.post(URL, { ...values, email });
@@ -31,7 +31,7 @@ const VerifyEmail = () => {
                 if (response.data.user.emailVerified) {
                     navigate('/dashboard');
                     toast.success("OTP verified successfully");
-                } else {
+                } else {    
                     // Email not verified
                     navigate('/login'); // Navigate back to login
                     toast.error("Email verification failed");

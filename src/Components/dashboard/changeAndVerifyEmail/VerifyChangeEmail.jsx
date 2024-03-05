@@ -22,6 +22,7 @@ const VerifyChangeEmail = () => {
             
             // Retrieve email from localStorage
             const user = localStorage.getItem('userDetails');
+            console.log(user);
             const { email } = JSON.parse(user) || {}; // Retrieve email from user object
 
             try {
@@ -45,6 +46,11 @@ const VerifyChangeEmail = () => {
 
     const handleResendOTP = () => {
         setResendLoading(true);
+
+        // Retrieve email from localStorage
+        const user = localStorage.getItem('userDetails');
+        const { email } = JSON.parse(user) || {}; // Retrieve email from user object
+
         axios.post(`${API_URL}/resendSignupOTP`, { email })
         .then(() => {
             alert('OTP has been resent successfully!');
