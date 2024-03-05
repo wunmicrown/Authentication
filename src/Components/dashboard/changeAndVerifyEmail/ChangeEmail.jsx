@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { API_URL } from "../../constants/Api";
 
 const ChangeEmail = () => {
-  const URL = `${API_URL}/v1/api/verifyEmail`;
+  const URL = `${API_URL}/v1/api/changeEmail`;
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -36,17 +36,19 @@ const ChangeEmail = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="bg-white shadow-md rounded-lg p-8">
+    
+      
+    <div className="flex bg-[#272A2B]  text-blue-600 items-center justify-center h-screen">
+      <div className="bg-[#121212] shadow-md rounded-lg p-8">
         <h1 className="text-3xl font-bold mb-4">Change Email Address</h1>
-        <p className="mb-4">Enter your new email address below:</p>
+        <p className="mb-4 text-white">Enter your new email address below:</p>
         <div className="flex items-center border-b border-gray-300 mb-4">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="New Email Address"
-            className="flex-1 mr-2 border-none focus:outline-none bg-slate-200 rounded-lg w-[444px] p-3"
+            className="flex-1 mr-2 border-none focus:outline-none bg-[#606161] rounded-lg w-[444px] p-3"
           />
         </div>
         <button

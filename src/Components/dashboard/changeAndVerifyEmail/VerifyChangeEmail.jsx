@@ -10,7 +10,7 @@ const VerifyChangeEmail = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [resendLoading, setResendLoading] = useState(false);
-    const URL = `${API_URL}/v1/auth/`;
+    const URL = `${API_URL}/v1/auth/verifyChangedEmail`;
 
     const formik = useFormik({
         initialValues: {
@@ -19,23 +19,20 @@ const VerifyChangeEmail = () => {
         onSubmit: async (values) => {
             setLoading(true);
             setError('');
-    
-            const savedUser = localStorage.getItem('user');
-            if (!savedUser) return navigate("/login");
-            const { email } = JSON.parse(savedUser);
-            if (!email) return navigate("/login");
-    
+        
+            const user = localStorage.getItem('user');
+            const { email } = JSON.parse(user); // Retrieve email from user object
+            
             try {
-                const response = await axios.post(URL, { ...values, email });
-                    console.log(response);
-    if (response.data.user.emailVerified) {
-        navigate('/dashboard');
-        toast.success("OTP verified successfully");
-    } else {
-        // Email not verified
-        navigate('/login'); // Navigate back to login
-        toast.error("Email verification failed");
-    }
+                const response = await axios.post(URL, { ...values, email }); // Pass email to the server
+                console.log(response);
+                if (response.data.status) {
+                    navigate('/dashboard');
+                    toast.success("OTP verified successfully");
+                } else {
+                    // Email not verified
+                    toast.error("Email verification failed");
+                }
             } catch (error) {
                 setError(error.response?.data?.message || 'Verification failed');
                 toast.error(error.response?.data?.message || 'Verification failed');
@@ -43,6 +40,7 @@ const VerifyChangeEmail = () => {
                 setLoading(false);
             }
         },
+        
     });
 
     const handleResendOTP = () => {
@@ -60,10 +58,10 @@ const VerifyChangeEmail = () => {
     };
 
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex bg-[#272A2B] justify-center items-center h-screen">
             <div className="w-full max-w-xs">
-                <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <h2 className="block text-center text-xl mb-6 text-blue-900 font-bold">Verify OTP</h2>
+                <div className="bg-[#121212] shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <h2 className="block text-center text-xl mb-6 text-blue-600 font-bold">Verify OTP</h2>
                     {error && <p className="text-red-500 text-xs italic">{error}</p>}
                     <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
                         <input
