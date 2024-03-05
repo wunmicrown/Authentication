@@ -24,12 +24,12 @@ const ChangeEmail = () => {
       toast.success(response.data.message);
       // Redirect to the OTP page if needed
       if (response.data.status) {
-        navigate(`/VerifyChangeEmail`);
+        navigate(`/verifyChangeEmail`);
       }
     } catch (error) {
       console.error("Error updating email:", error);
       // Display error message
-      toast.error("Failed to update email. Please try again later.");
+      toast.error("the email has already been used ");
     } finally {
       setLoading(false);
     }
@@ -48,7 +48,7 @@ const ChangeEmail = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="New Email Address"
-            className="flex-1 mr-2 border-none focus:outline-none bg-[#606161] rounded-lg w-[444px] p-3"
+            className="flex-1 mr-2 border-none text-gray-100 focus:outline-none bg-[#606161] rounded-lg w-[444px] p-3"
           />
         </div>
         <button

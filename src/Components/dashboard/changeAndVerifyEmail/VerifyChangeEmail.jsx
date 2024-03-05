@@ -19,14 +19,15 @@ const VerifyChangeEmail = () => {
         onSubmit: async (values) => {
             setLoading(true);
             setError('');
-        
-            const user = localStorage.getItem('user');
-            const { email } = JSON.parse(user); // Retrieve email from user object
             
+            // Retrieve email from localStorage
+            const user = localStorage.getItem('userDetails');
+            const { email } = JSON.parse(user) || {}; // Retrieve email from user object
+
             try {
                 const response = await axios.post(URL, { ...values, email }); // Pass email to the server
                 console.log(response);
-                if (response.data.status) {
+                if (response.data.user.emailVerified) {
                     navigate('/dashboard');
                     toast.success("OTP verified successfully");
                 } else {
@@ -40,7 +41,6 @@ const VerifyChangeEmail = () => {
                 setLoading(false);
             }
         },
-        
     });
 
     const handleResendOTP = () => {

@@ -19,23 +19,23 @@ const VerifyEmail = () => {
         onSubmit: async (values) => {
             setLoading(true);
             setError('');
-    
-            const savedUser = localStorage.getItem('user');
+
+            const savedUser = localStorage.getItem('userDetails');
             if (!savedUser) return navigate("/login");
             const { email } = JSON.parse(savedUser);
             if (!email) return navigate("/login");
-    
+
             try {
                 const response = await axios.post(URL, { ...values, email });
-                    console.log(response);
-    if (response.data.user.emailVerified) {
-        navigate('/dashboard');
-        toast.success("OTP verified successfully");
-    } else {
-        // Email not verified
-        navigate('/login'); // Navigate back to login
-        toast.error("Email verification failed");
-    }
+                console.log(response);
+                if (response.data.user.emailVerified) {
+                    navigate('/dashboard');
+                    toast.success("OTP verified successfully");
+                } else {
+                    // Email not verified
+                    navigate('/login'); // Navigate back to login
+                    toast.error("Email verification failed");
+                }
             } catch (error) {
                 setError(error.response?.data?.message || 'Verification failed');
                 toast.error(error.response?.data?.message || 'Verification failed');
@@ -48,15 +48,15 @@ const VerifyEmail = () => {
     const handleResendOTP = () => {
         setResendLoading(true);
         axios.post(`${API_URL}/resendSignupOTP`, { email })
-        .then(() => {
-            alert('OTP has been resent successfully!');
-        })
-        .catch(() => {
-            alert('Failed to resend OTP. Please try again later.');
-        })
-        .finally(() => {
-            setResendLoading(false);
-        });
+            .then(() => {
+                alert('OTP has been resent successfully!');
+            })
+            .catch(() => {
+                alert('Failed to resend OTP. Please try again later.');
+            })
+            .finally(() => {
+                setResendLoading(false);
+            });
     };
 
     return (
