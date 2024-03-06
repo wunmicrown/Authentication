@@ -79,7 +79,7 @@ const Dashboard = () => {
         ...prevData,
         profilePic: response.data.profilePicUrl
       }));
-      setImageSrc(response.data.profilePicUrl); 
+      setImageSrc(response.data.profilePicUrl);
 
       toast.success('Profile picture updated successfully!');
       setSelectedFile(null);
@@ -100,7 +100,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="relative bg-[#383C3F] font-serif min-h-screen ">
+      <div className="relative bg-[#383C3F] font-serif min-h-screen w-full ">
         <nav className="bg-[#1D2021] z-10 sticky top-0 w-full pt-4">
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-18">
@@ -134,7 +134,7 @@ const Dashboard = () => {
                         <div>
                           <img
                             className="h-8 w-8 rounded-full"
-                            src={imageSrc} 
+                            src={imageSrc}
                             alt=""
                           />
                         </div>
@@ -176,7 +176,7 @@ const Dashboard = () => {
                   <div>
                     <img
                       className="h-52 w-52 rounded-full bg-[#a6355f]"
-                      src={imageSrc} 
+                      src={imageSrc}
                       alt=""
                     />
                   </div>
@@ -223,8 +223,8 @@ const Dashboard = () => {
             </div>
 
           </div>
-          <div className="flex flex-col items-center justify-center w-full md:w-1/2 mt-4 md:mt-0 shadow-xl p-5">
-            <div className="mb-4">
+          <div className="flex flex-col items-center justify-center w-full  md:w-1/2 mt-4 md:mt-0 shadow-xl p-5">
+            <div className="mb-4 md">
               <p className="text-gray-300 font-bold mb-2">Bio</p>
               <input type="text" width={500} height={500} className="bg-[#626565] w-96 h-40 focus:outline-none rounded-lg text-white font-bold hover:border border-blue-400" />
             </div>
