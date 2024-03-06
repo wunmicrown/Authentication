@@ -11,6 +11,7 @@ import ChangePassword from "./Components/dashboard/changePassword";
 import Dashboard from "./Components/dashboard/Dashboard";
 import ChangeEmail from "./Components/dashboard/changeAndVerifyEmail/ChangeEmail";
 import VerifyChangeEmail from "./Components/dashboard/changeAndVerifyEmail/VerifyChangeEmail";
+import UploadFile from "./Components/dashboard/UploadFile";
 
 const App = () => {
 
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/dashboard/changePassword" element={<ChangePassword />} />
         <Route path="/dashboard/changeEmail" element={<ChangeEmail/>} />
         <Route path="/verifyChangeEmail" element={<VerifyChangeEmail/>} />
+        <Route path="" element={<UploadFile/>} />
 
       </Routes>
     </>
