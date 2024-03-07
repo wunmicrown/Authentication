@@ -35,12 +35,16 @@ const SignUp = () => {
   });
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 bg-gray-100 rounded-md">
+    <main className="pt-20">
+        <div className="max-w-md mx-auto shadow-lg p-6  bg-[#121212] rounded">
       <h2 className="text-2xl mb-4 text-center font-bold text-blue-600">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-300">
+                First Name
+              </label>
           <div className="flex items-center border rounded-md px-3 py-2">
-            <AiOutlineUser className="mr-2" />
+            <AiOutlineUser className="mr-2 text-gray-300" />
             <input
               type="text"
               name="firstName"
@@ -53,8 +57,11 @@ const SignUp = () => {
           <span className="text-red-500">{errors.firstName}</span>
         </div>
         <div className="mb-4">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-300">
+                Last Name
+              </label>
           <div className="flex items-center border rounded-md px-3 py-2">
-            <AiOutlineUser className="mr-2" />
+            <AiOutlineUser className="mr-2 text-gray-300 " />
             <input
               type="text"
               name="lastName"
@@ -67,8 +74,11 @@ const SignUp = () => {
           <span className="text-red-500">{errors.lastName}</span>
         </div>
         <div className="mb-4">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-300">
+                Email Address
+              </label>
           <div className="flex items-center border rounded-md px-3 py-2">
-            <AiOutlineMail className="mr-2" />
+            <AiOutlineMail className="mr-2 text-gray-300" />
             <input
               type="text"
               name="email"
@@ -81,8 +91,11 @@ const SignUp = () => {
           <span className="text-red-500">{errors.email}</span>
         </div>
         <div className="mb-4">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-300">
+                Password
+              </label>
           <div className="flex items-center border rounded-md px-3 py-2">
-            <AiOutlineLock className="mr-2" />
+            <AiOutlineLock className="mr-2 text-gray-300" />
             <input
               type="password"
               name="password"
@@ -101,11 +114,12 @@ const SignUp = () => {
           Sign Up
         </button>
         <div className="text-center mt-4">
-          <p>Already have an account?</p>
+          <p className="text-gray-300">Already have an account?</p>
           <Link to="/login" className="text-blue-500 hover:underline">Login here</Link>
         </div>
       </form>
     </div>
+    </main>
   );
 };
 
