@@ -1,4 +1,4 @@
-{/*
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -128,15 +128,5 @@ const ChangePassword = () => {
   );
 };
 
-export default ChangePassword; */}
+export default ChangePassword; 
 
-import React from 'react';
-
-const ChangePassword = () => {
-  return (
-    <div>ChangePassword</div>
-  )
-}
-
-
-export default ChangePassword;
