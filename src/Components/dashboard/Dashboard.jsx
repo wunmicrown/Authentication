@@ -111,8 +111,8 @@ const Dashboard = () => {
               </Link>
             </div>
             <div className="flex items-center">
-            <div className="  mr-4">
-                <img className="h-12 w-12 rounded-full" src={imageSrc} alt="" />
+            <div className=" mr-4">
+                <img className="h-12 w-12 rounded-full bg-[#a6355f]" src={imageSrc} alt="" />
               </div>
               <div className="ml-2 relative">
                 <button className="text-gray-300 hover:text-white flex mr-4" onClick={toggleDropdown}>

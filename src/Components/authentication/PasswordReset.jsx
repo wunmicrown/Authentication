@@ -62,16 +62,16 @@ const PasswordReset = () => {
 
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <div className="text-2xl font-bold mb-4 text-center">
+    <div className="flex justify-center items-center h-screen ">
+      <div className="bg-[#121212] p-8 rounded-lg shadow-lg w-96">
+        <div className="text-2xl font-bold mb-4 text-center text-blue-700">
           <BsShieldLock className="inline-block text-blue-500 text-4xl mr-2" />
           Change Password
         </div>
         {message && <p className="text-red-500 text-center mb-4">{message}</p>}
         {/* <form onSubmit={handleSubmit}> */}
         <div className="mb-4">
-          <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700">New Password</label>
+          <label htmlFor="newPassword" className="block text-sm font-medium text-gray-400">New Password</label>
           <input
             type="password"
             name="newPassword"
@@ -83,7 +83,7 @@ const PasswordReset = () => {
           {/* <span className="text-red-500">{errors.newPassword}</span> */}
         </div>
         <div className="mb-4">
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm Password</label>
+          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-400">Confirm Password</label>
           <input
             type="password"
             name="confirmPassword"
@@ -102,7 +102,7 @@ const PasswordReset = () => {
             onChange={handleChange}
             checked={data.termsAccepted}
           />
-          <label htmlFor="termsAccepted" className="text-sm text-gray-700">I accept the Terms and Conditions</label>
+          <label htmlFor="termsAccepted" className="text-sm text-gray-400">I accept the Terms and Conditions</label>
         </div>
         <button onClick={handleSubmit} type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md">
           Reset Password
