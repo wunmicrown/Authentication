@@ -10,7 +10,7 @@ import VerifyEmail from "./Components/authentication/signupVerifyAndSignup/Verif
 import Dashboard from "./Components/dashboard/Dashboard";
 import ChangeEmail from "./Components/dashboard/changeAndVerifyEmail/ChangeEmail";
 import VerifyChangeEmail from "./Components/dashboard/changeAndVerifyEmail/VerifyChangeEmail";
-import ChangePassword from "./Components/dashboard/changePassword";
+// import ChangePassword from "./Components/dashboard/changePassword";
 import UploadFile from "./Components/dashboard/UploadFile";
 
 const App = () => {
@@ -40,7 +40,7 @@ const App = () => {
         <Route path="/OTP" element={<OTPVerification />} />
         <Route path="/verifyEmail" element={<VerifyEmail />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/changePassword" element={<ChangePassword />} />
+        {/* <Route path="/changePassword" element={<ChangePassword />} /> */}
         <Route path="/changeEmail" element={<ChangeEmail/>} />
         <Route path="/verifyChangeEmail" element={<VerifyChangeEmail/>} />
         <Route path="" element={<UploadFile/>} />

@@ -124,7 +124,7 @@ const Dashboard = () => {
                         <Link to="/changeEmail" className="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">
                           <AiOutlineMail className="inline-block mr-2" /> Emails
                         </Link>
-                        <Link to="/ChangePassword" className="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">
+                        <Link to="" className="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">
                           <BsShieldLock className="inline-block text-gray-300 text-4xl mr-2" />
                           Change password
                         </Link>
