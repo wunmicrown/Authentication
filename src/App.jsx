@@ -11,6 +11,7 @@ import Dashboard from "./Components/dashboard/Dashboard";
 import ChangeEmail from "./Components/dashboard/changeAndVerifyEmail/ChangeEmail";
 import VerifyChangeEmail from "./Components/dashboard/changeAndVerifyEmail/VerifyChangeEmail";
 import UploadFile from "./Components/dashboard/UploadFile";
+import ChangePassword from "./Components/dashboard/ChangePassword";
 
 const App = () => {
 
