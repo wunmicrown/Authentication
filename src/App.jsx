@@ -40,8 +40,8 @@ const App = () => {
         <Route path="/OTP" element={<OTPVerification />} />
         <Route path="/verifyEmail" element={<VerifyEmail />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/changePassword" element={<ChangePassword />} />
-        <Route path="/dashboard/changeEmail" element={<ChangeEmail/>} />
+        <Route path="/changePassword" element={<ChangePassword />} />
+        <Route path="/changeEmail" element={<ChangeEmail/>} />
         <Route path="/verifyChangeEmail" element={<VerifyChangeEmail/>} />
         <Route path="" element={<UploadFile/>} />
 
