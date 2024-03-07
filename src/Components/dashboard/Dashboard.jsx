@@ -100,7 +100,7 @@ const Dashboard = () => {
 
   return (
     <>
-        <div className="relative bg-[#383C3F] font-serif min-h-screen w-full">
+        <div className="relative bg-[#383C3F] font-serif w-full">
       <nav className="bg-[#1D2021] z-10 sticky top-0 w-full pt-4">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="flex flex-shrink-0 justify-between items-center h-18">
@@ -138,8 +138,8 @@ const Dashboard = () => {
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row lg:mx-auto md:justify-center md:items-center md:space-x-4 p-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen ">
+        <div className="flex flex-col md:flex-row lg:mx-auto md:justify-center md:items-center md:space-x-4 pt-20">
           <div className="w-full flex md:w-1/2 p-8 shadow-2xl">
             <div className="flex flex-col mx-auto space-y-4">
               <h3 className="text-gray-200 text-center">Profile picture</h3>

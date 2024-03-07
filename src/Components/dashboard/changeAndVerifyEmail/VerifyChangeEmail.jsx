@@ -22,7 +22,7 @@ const VerifyChangeEmail = () => {
             
             // Retrieve email from localStorage
             const user = localStorage.getItem('userDetails');
-            console.log(user);
+            // console.log(user);
             const { email } = JSON.parse(user) || {}; // Retrieve email from user object
 
             try {
