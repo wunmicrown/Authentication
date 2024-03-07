@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "",
+  "homepage": "https://auth-system-app.vercel.app",
 
   "scripts": {
     "dev": "vite",
