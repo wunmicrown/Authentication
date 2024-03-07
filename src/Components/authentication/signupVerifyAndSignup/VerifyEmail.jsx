@@ -62,8 +62,8 @@ const VerifyEmail = () => {
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="w-full max-w-xs">
-                <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <h2 className="block text-center text-xl mb-6 text-blue-900 font-bold">Verify OTP</h2>
+                <div className="bg-[#121212] shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <h2 className="block text-center text-xl mb-6 text-blue-700 font-bold">Verify OTP</h2>
                     {error && <p className="text-red-500 text-xs italic">{error}</p>}
                     <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
                         <input
