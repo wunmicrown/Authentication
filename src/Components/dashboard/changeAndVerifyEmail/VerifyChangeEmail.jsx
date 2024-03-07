@@ -30,7 +30,7 @@ const VerifyChangeEmail = () => {
                 console.log(response);
                 if (response.data.user.emailVerified) {
                     navigate('/dashboard');
-                    toast.success("OTP verified successfully");
+                    toast.success("Email verified successfully");
                 } else {
                     // Email not verified
                     toast.error("Email verification failed");

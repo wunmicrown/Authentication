@@ -22,6 +22,9 @@ const ChangeEmail = () => {
       console.log(response);
       // Display success message
       toast.success(response.data.message);
+      // Update email in localStorage
+      localStorage.setItem("userDetails", JSON.stringify({ ...JSON.parse(localStorage.getItem("userDetails")), email }));
+
       // Redirect to the OTP page if needed
       if (response.data.status) {
         navigate(`/verifyChangeEmail`);
