@@ -7,10 +7,10 @@ import EmailReset from "./Components/authentication/EmailReset";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import VerifyEmail from "./Components/authentication/signupVerifyAndSignup/VerifyEmail";
-import ChangePassword from "./Components/dashboard/changePassword";
 import Dashboard from "./Components/dashboard/Dashboard";
 import ChangeEmail from "./Components/dashboard/changeAndVerifyEmail/ChangeEmail";
 import VerifyChangeEmail from "./Components/dashboard/changeAndVerifyEmail/VerifyChangeEmail";
+import ChangePassword from "./Components/dashboard/changePassword";
 import UploadFile from "./Components/dashboard/UploadFile";
 
 const App = () => {
