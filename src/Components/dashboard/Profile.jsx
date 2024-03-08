@@ -14,7 +14,7 @@ const Profile = ({ user, setUser }) => {
   const handleEditClick = () => {
     fileInputRef.current.click();
   };
-  
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
@@ -38,10 +38,10 @@ const Profile = ({ user, setUser }) => {
       toast.error('Please select a file.');
       return;
     }
-    
+
     const formData = new FormData();
     formData.append('image', selectedFile);
-    
+
     try {
       const token = localStorage.getItem('token');
       const { data } = await axios.post(`${API_URL}/v1/auth/upload-dp`, formData, {
@@ -64,29 +64,29 @@ const Profile = ({ user, setUser }) => {
       toast.error('Error uploading profile picture.');
     }
   };
-  
+
   const inputRef = useRef(null);
 
-  
+
   const handleEditFieldClick = (field) => {
     setFieldToUpdate(field);
     setInputValue(user[field]);
     setShowModal(true);
   };
-  
+
   const handleCloseModal = () => {
     setShowModal(false);
     setInputValue('');
     console.log("Input value after setting to empty string:", inputValue);
   };
-  
+
   const handleSave = async () => {
     try {
       if (!inputValue.trim()) {
         toast.error(`${fieldToUpdate} cannot be empty.`);
         return;
       }
-      
+
       const token = localStorage.getItem('token');
       const updatedUser = { ...user, [fieldToUpdate]: inputValue };
       const { data } = await axios.post(`${API_URL}/v1/auth/updateUser`, updatedUser, {
@@ -95,7 +95,7 @@ const Profile = ({ user, setUser }) => {
           "Content-Type": "application/json"
         }
       });
-  
+
       setUser(data.updatedUser);
       toast.success(`Your ${fieldToUpdate} section has been updated successfully!`);
       handleCloseModal();
@@ -103,7 +103,7 @@ const Profile = ({ user, setUser }) => {
       console.error(`Error updating ${fieldToUpdate}:`, error);
       toast.error(`Error updating ${fieldToUpdate}.`);
     }
-    
+
   };
 
   // Reset inputValue whenever user changes
@@ -192,22 +192,17 @@ const Profile = ({ user, setUser }) => {
               placeholder={`Write something about ${fieldToUpdate}...`}
             />
             <div className="flex justify-end">
-              <button
-                onClick={handleSave}
-                className="bg-[#2e6a31] text-white px-4 py-2 rounded-md mr-2"
-              >
+              <button onClick={handleSave} className="bg-[#2e6a31] text-white px-4 py-2 rounded-md mr-2">
                 Save
               </button>
-              <button
-                onClick={handleCloseModal}
-                className="bg-red-600 px-4 py-2 rounded-md text-white"
-              >
+              <button onClick={handleCloseModal} className="bg-red-600 px-4 py-2 rounded-md text-white">
                 Cancel
               </button>
             </div>
           </div>
         </div>
       )}
+
     </>
   );
 };
