@@ -55,17 +55,17 @@ const Dashboard = () => {
   return (
     <>
         <NavBar user={user} />
-        <div className="relative px-2 font-serif w-full ">
+        <div className="relative px-2 font-serif w-full">
           
           
-          <section className="w-ful pt-24 max-w-[1200px] mx-auto sm:flex sm:gap-10">
+          <section className="w-full pt-24 max-w-[1200px] mx-auto sm:flex sm:gap-10 ">
 
             {/* Profile Component */}
             <div className="w-full h-full-dvh-100px sm:max-w-sm">
               <Profile user={user} setUser={setUser} />
             </div>
 
-            <div className="w-full sm:px-6 lg:px-8">
+            <div className="w-full sm:px-6 lg:px-8 pt-8">
                 <div> <strong>About:</strong></div>
                 <p>{user.about??""}</p>
                 <div><strong>Bio:</strong></div>

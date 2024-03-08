@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <>
 
-            <footer className="bg-[#272A2B] flex-shrink-0 flex justify-center text-gray-300 py-2">
+            <footer className="bg-[#272A2B] flex-shrink-0 flex justify-center w-full pt-4 h-[72px] text-gray-300 ">
                 <div className="flex items-center">
                     <img
                         className="h-8 w-8 bg-b"
