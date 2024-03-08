@@ -99,7 +99,7 @@ const Profile = ({ user, setUser }) => {
   
       setUser(data.updatedUser);
       console.log("User state after saving changes:", user); // Add this line
-      toast.success(`${fieldToUpdate} updated successfully!`);
+      toast.success(`Your ${fieldToUpdate} section has been updated successfully!`);
       handleCloseModal();
     } catch (error) {
       console.error(`Error updating ${fieldToUpdate}:`, error);
@@ -114,7 +114,7 @@ const Profile = ({ user, setUser }) => {
   }, [user]);
   return (
     <>
-      <div className="w-full flex pt-8 shadow-2xl h-full">
+      <div className="w-full flex pt-8 shadow-2xl h-full font-serif">
         <div className="flex flex-col mx-auto space-y-4">
           <div className="max-w-xs rounded-full flex flex-col items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
             <span className="sr-only">Open user menu</span>
@@ -188,7 +188,7 @@ const Profile = ({ user, setUser }) => {
             <h2 className="text-lg font-semibold mb-4 text-blue-600">Update {fieldToUpdate}</h2>
             <textarea
               ref={inputRef}
-              className="w-full h-32 border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500 mb-4"
+              className="w-full h-32 border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500 mb-4 text-gray-200 text-lg font-semibold"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder={`Write something about ${fieldToUpdate}...`}
