@@ -81,7 +81,6 @@ const Profile = ({ user, setUser }) => {
   };
   
   const handleSave = async () => {
-    console.log("handleSave function called"); 
     try {
       if (!inputValue.trim()) {
         toast.error(`${fieldToUpdate} cannot be empty.`);
@@ -98,7 +97,6 @@ const Profile = ({ user, setUser }) => {
       });
   
       setUser(data.updatedUser);
-      console.log("User state after saving changes:", user); // Add this line
       toast.success(`Your ${fieldToUpdate} section has been updated successfully!`);
       handleCloseModal();
     } catch (error) {
