@@ -1,4 +1,4 @@
-import {Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import SignUp from "./Components/authentication/signupVerifyAndSignup/SignUp";
 import Login from "./Components/authentication/Login";
 import OTPVerification from "./Components/authentication/OTPVerification";
@@ -12,6 +12,7 @@ import ChangeEmail from "./Components/dashboard/changeAndVerifyEmail/ChangeEmail
 import VerifyChangeEmail from "./Components/dashboard/changeAndVerifyEmail/VerifyChangeEmail";
 import UploadFile from "./Components/dashboard/UploadFile";
 import ChangePassword from "./Components/dashboard/ChangePassword";
+import NotFound from "./Components/notfoundPage/NotFound";
 
 const App = () => {
 
@@ -40,11 +41,13 @@ const App = () => {
         <Route path="/OTP" element={<OTPVerification />} />
         <Route path="/verifyEmail" element={<VerifyEmail />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/changePassword" element={<ChangePassword/>} />
-        <Route path="/changeEmail" element={<ChangeEmail/>} />
-        <Route path="/verifyChangeEmail" element={<VerifyChangeEmail/>} />
-        <Route path="" element={<UploadFile/>} />
+        <Route path="/changePassword" element={<ChangePassword />} />
+        <Route path="/changeEmail" element={<ChangeEmail />} />
+        <Route path="/verifyChangeEmail" element={<VerifyChangeEmail />} />
+        <Route path="" element={<UploadFile />} />
 
+        {/* Catch-all route for Not Found page */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
