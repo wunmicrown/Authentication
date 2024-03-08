@@ -180,9 +180,9 @@ const Profile = ({ user, setUser }) => {
 
       {/* Modal for About/Bio */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div className="fixed inset-0 flex items-center justify-center z-50 ">
           <div className="absolute inset-0 bg-[#323435] opacity-45"></div>
-          <div className="bg-[#121212] p-8 rounded-lg shadow-md z-10 w-3/4">
+          <div className="bg-[#121212] p-8 rounded-lg shadow-md z-10 w-auto lg:w-2/4 sm:w-2/4">
             <h2 className="text-lg font-semibold mb-4 text-blue-600">Update {fieldToUpdate}</h2>
             <textarea
               ref={inputRef}
