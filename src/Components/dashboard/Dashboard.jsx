@@ -71,7 +71,7 @@ const Dashboard = () => {
               <p className="break-all font-bold">{user.about ?? ""}</p>
             </div>
             <hr className="mt-8 " />
-            <div className="flex flex-col gap-4 mt-10">
+            <div className="flex flex-col gap-4 mt-10 max-sm:mb-10">
               <strong className="text-blue-400">Bio:</strong>
               <p className="break-all font-bold">{user.bio ?? ""}</p>
             </div>

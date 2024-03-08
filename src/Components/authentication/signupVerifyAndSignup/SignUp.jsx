@@ -35,7 +35,9 @@ const SignUp = () => {
   });
 
   return (
-    <main className="pt-20">
+   <>
+     <section className="pt-44 bg-[#272A2B] h-screen">
+     <main className="pt-10">
         <div className="max-w-md mx-auto shadow-lg p-6  bg-[#121212] rounded">
       <h2 className="text-2xl mb-4 text-center font-bold text-blue-600">Sign Up</h2>
       <form onSubmit={handleSubmit}>
@@ -120,6 +122,8 @@ const SignUp = () => {
       </form>
     </div>
     </main>
+     </section>
+   </>
   );
 };
 
