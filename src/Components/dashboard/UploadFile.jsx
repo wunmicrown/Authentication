@@ -33,6 +33,13 @@ const UploadFile = () => {
 
 
       <img src={data.storedImage} alt="" />
+      {/* <div className="mb-4 md">
+                <p className="text-gray-300 font-bold mb-2">Bio</p>
+                <input type="text" width={500} height={500} className="bg-[#626565] w-full md:w-80 h-40 focus:outline-none rounded-lg text-white font-bold hover:border border-blue-400" />
+              </div>
+              <div className="ml-36">
+                <button className="bg-green-700 text-gray-300 rounded border-none p-2 cursor-pointer">Save</button>
+              </div> */}
       </div>
   )
 }
