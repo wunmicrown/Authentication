@@ -31,7 +31,7 @@ const Dashboard = () => {
         console.log('Error verifying token:', error);
         console.log(error.response);
         setLoading(false);
-        setTokenMatch(false);
+        // setTokenMatch(false);
         navigate('/login');
       }
     };
@@ -55,21 +55,25 @@ const Dashboard = () => {
   return (
     <>
         <NavBar user={user} />
-        <div className="relative px-2 font-serif w-full">
+        <div className="relative px-2 font-serif w-full  bg-[#272A2B] ">
           
           
-          <section className="w-full pt-24 max-w-[1200px] mx-auto sm:flex sm:gap-10 ">
+          <section className="w-full pt-24 max-w-[1200px] mx-auto sm:flex sm:gap-10">
 
             {/* Profile Component */}
-            <div className="w-full h-full-dvh-100px sm:max-w-sm">
+            <div className="w-full h-full-dvh-100px sm:max-w-sm ">
               <Profile user={user} setUser={setUser} />
             </div>
 
-            <div className="w-full sm:px-6 lg:px-8 pt-8">
-                <div> <strong>About:</strong></div>
-                <p>{user.about??""}</p>
-                <div><strong>Bio:</strong></div>
-                <p>{user.bio??""}</p>
+            <div className="w-full sm:px-6 lg:px-8 pt-10 shadow-2xl mt-8 text-gray-300">
+                <div className="flex gap-4"> 
+                <strong className="text-blue-400">About:</strong>
+                {/* <p>{user.about??""}</p> */}
+                </div>
+                <div className="flex gap-4 mt-10">
+                  <strong className="text-blue-400">Bio:</strong>
+                {/* <p>{user.bio??""}</p> */}
+                </div>
             </div>
 
           </section>

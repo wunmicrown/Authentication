@@ -50,7 +50,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="pt-44">
+      <div className="pt-44 bg-[#272A2B] h-screen">
         <div className="max-w-md mx-auto shadow-lg bg-[#121212] p-5 rounded text-gray-300">
           <h2 className="text-2xl mb-4 text-center font-bold text-blue-600 pt-4">Login</h2>
           <form onSubmit={loginFormik.handleSubmit} className="space-y-4">

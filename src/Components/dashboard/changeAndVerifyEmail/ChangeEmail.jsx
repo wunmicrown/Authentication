@@ -42,9 +42,9 @@ const ChangeEmail = () => {
     
       
     <div className="flex bg-[#272A2B]  text-blue-600 items-center justify-center h-screen">
-      <div className="bg-[#121212] shadow-md rounded-lg p-8">
-        <h1 className="text-3xl font-bold mb-4">Change Email Address</h1>
-        <p className="mb-4 text-white">Enter your new email address below:</p>
+      <div className="bg-[#121212] shadow-md rounded-lg p-8  max-sm:w-80 ">
+        <h1 className="text-3xl font-bold mb-4 max-[393px]:text-xl">Change Email Address</h1>
+        <p className="mb-4 text-white text-lg max-[393px]:text-sm">Enter your new email address below:</p>
         <div className="flex items-center border-b border-gray-300 mb-4">
           <input
             type="email"
