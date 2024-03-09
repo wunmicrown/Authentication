@@ -20,7 +20,7 @@ const VerifyEmail = () => {
             setLoading(true);
             setError('');
 
-            const savedUser = localStorage.getItem('user');
+            const savedUser = localStorage.getItem('userDetails');
             if (!savedUser) return navigate("/login");
             const { email } = JSON.parse(savedUser);
             if (!email) return navigate("/login");  

@@ -50,7 +50,7 @@ const OTPVerification = () => {
 
   return (
     <>
-      <main>
+      <main className="bg-[#1D2021] h-screen">
       <div className="flex justify-center items-center  pt-48">
         <div className="bg-[#121212] p-8 rounded-lg shadow-md ">
           <h2 className="text-center text-2xl font-bold mb-4 text-blue-700">Email Verification</h2>

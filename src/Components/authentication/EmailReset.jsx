@@ -16,7 +16,7 @@ const EmailReset = () => {
       const response = await axios.post(URL, { email });
       toast.success(response.data.message);
       if (response.data.status) {
-        navigate(`/otp?email=${email}`);
+        navigate(`/confirm-otp?email=${email}`);
       }
     } catch (error) {
       console.error("Error resetting email:", error);
@@ -27,7 +27,9 @@ const EmailReset = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen text-gray-400">
+    <>
+    
+    <div className="flex items-center  justify-center h-screen text-gray-400">
       <div className="bg-[#121212] shadow-md rounded-lg p-8">
         <h1 className="text-3xl font-bold mb-4 text-blue-700">Find Your Account</h1>
         <p className="mb-4">
@@ -52,6 +54,7 @@ const EmailReset = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

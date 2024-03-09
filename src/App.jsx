@@ -9,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 import VerifyEmail from "./Components/authentication/signupVerifyAndSignup/VerifyEmail";
 import Dashboard from "./Components/dashboard/Dashboard";
 import ChangeEmail from "./Components/dashboard/changeAndVerifyEmail/ChangeEmail";
-import VerifyChangeEmail from "./Components/dashboard/changeAndVerifyEmail/VerifyChangeEmail";
 import UploadFile from "./Components/dashboard/UploadFile";
 import ChangePassword from "./Components/dashboard/ChangePassword";
 import NotFound from "./Components/notfoundPage/NotFound";
@@ -38,12 +37,11 @@ const App = () => {
         <Route path="/" element={<SignUp />} />
         <Route path="/resetpassword" element={<PasswordReset />} />
         <Route path="/resetEmail" element={<EmailReset />} />
-        <Route path="/OTP" element={<OTPVerification />} />
-        <Route path="/verifyEmail" element={<VerifyEmail />} />
+        <Route path="/confirm-otp" element={<OTPVerification />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/changePassword" element={<ChangePassword />} />
-        <Route path="/changeEmail" element={<ChangeEmail />} />
-        <Route path="/verifyChangeEmail" element={<VerifyChangeEmail />} />
+        <Route path="/dashboard/Change-password" element={<ChangePassword />} />
+        <Route path="/dashboard/change-email" element={<ChangeEmail />} />
         <Route path="" element={<UploadFile />} />
 
         {/* Catch-all route for Not Found page */}

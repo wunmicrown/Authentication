@@ -27,7 +27,7 @@ const ChangeEmail = () => {
 
       // Redirect to the OTP page if needed
       if (response.data.status) {
-        navigate(`/verifyChangeEmail`);
+        navigate(`/verify-email`);
       }
     } catch (error) {
       console.error("Error updating email:", error);
@@ -54,13 +54,15 @@ const ChangeEmail = () => {
             className="flex-1 mr-2 border-none text-gray-100 focus:outline-none bg-[#606161] rounded-lg w-[444px] p-3"
           />
         </div>
+        <div className="flex justify-end">
         <button
           className="bg-blue-600 text-white px-4 py-2 rounded-lg"
           onClick={handleSubmit}
           disabled={loading}
         >
-          {loading ? "Loading..." : "Add"}
+          {loading ? "Loading..." : "Change"}
         </button>
+        </div>
       </div>
     </div>
   );
