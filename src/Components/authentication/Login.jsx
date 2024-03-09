@@ -101,7 +101,7 @@ const Login = () => {
                 <input type="checkbox" className="mr-2" />
                 <span>Remember me</span>
               </div>
-              <Link to="/resetEmail" className="text-blue-600">Forgot password?</Link>
+              <Link to="/reset-email" className="text-blue-600">Forgot password?</Link>
             </div>
             <div className="flex">
               <p>Don't have an account <span>
