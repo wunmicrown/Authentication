@@ -37,7 +37,7 @@ const SignUp = () => {
   return (
    <>
      <section className="bg-[#272A2B] h-screen">
-     <main className="pt-40">
+     <main className=" pt-28">
         <div className="max-w-md mx-auto shadow-lg p-6  bg-[#121212] rounded">
       <h2 className="text-2xl mb-4 text-center font-bold text-blue-600">Sign Up</h2>
       <form onSubmit={handleSubmit}>
