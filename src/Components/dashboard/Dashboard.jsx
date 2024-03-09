@@ -6,7 +6,7 @@ import { API_URL } from "../constants/Api";
 import Profile from "./Profile";
 import NavBar from "./nav/NavBar";
 import Footer from "./foooter/Footer";
-
+import'./Loading.css';
 const Dashboard = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -44,7 +44,14 @@ const Dashboard = () => {
 
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return<>
+            <div className="bg-[#121212] h-screen flex justify-center">
+
+                <div className=" pt-80">
+                <h1 className=" text-xl loading-bar">Loading...</h1>;
+                </div>
+            </div>
+       </> 
   }
 
   if (!tokenMatch) {
