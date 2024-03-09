@@ -48,7 +48,7 @@ const Dashboard = () => {
             <div className="bg-[#121212] h-screen flex justify-center">
 
                 <div className=" pt-80">
-                <h1 className=" text-xl loading-bar">Loading...</h1>;
+                <h1 className="loading-bar">Loading...</h1>;
                 </div>
             </div>
        </> 
